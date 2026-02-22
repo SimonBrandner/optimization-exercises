@@ -36,7 +36,7 @@
       $min{(x-2)^2 + (y-1/2)^2 | x^2 <= 1, y^2 <= 1}$,#v(3pt)
     ],
     [
-      $min{x | x in RR, x > a_i forall i in {1, dots, n}}$ pro dané $a_1, dots, a_n in RR$,
+      $min{x | x in RR, x >= a_i forall i in {1, dots, n}}$ pro dané $a_1, dots, a_n in RR$,
     ],
     [
       Máte vyrobit papírovou krabici o objemu 72 litrů, jejíž délka je dvojnásobek její šířky. Krabice má všech šest stěn. Jaké budou její rozměry, má-li se na ni spotřebovat co nejméně papíru? Tloušťka stěn je zanedbatelná.
@@ -374,7 +374,10 @@
 ]
 
 #solution[
-  Neexistuje, neboť $norm(mat(1; -1; 2)) = sqrt(4) != sqrt(7) = norm(mat(1; 2; -1; 1)) .$
+  Neexistuje, neboť
+  $
+    d(mat(1; -1; 2), mat(1; 1; 0)) = norm(mat(0; -2; 2)) = sqrt(8) != sqrt(3) = norm(mat(1; 1; 0; 1)) = d(mat(1; 2; -1; 1), mat(0; 1; -1; 0)).
+  $
 ]
 
 #exercise(number: 13)[
