@@ -233,7 +233,7 @@
   #enum(
     $norm(boup(x)) = sqrt(innerproduct(boup(x), boup(x))) = sqrt(1 + 4 + 9) = sqrt(14),$,
     $d(boup(x), boup(y)) = norm(boup(x) - boup(y)) = sqrt(4 + 4 +4) = sqrt(12),$,
-    $angle (boup(x), boup(x)) = arccos((innerproduct(boup(x), boup(y)))/(norm(boup(x)) norm(boup(y)))) = arccos((-1+0+3)/ (sqrt(14) sqrt(2))) = arccos(2/sqrt(28)) = arccos(1/sqrt(7)).$,
+    $angle (boup(x), boup(y)) = arccos((innerproduct(boup(x), boup(y)))/(norm(boup(x)) norm(boup(y)))) = arccos((-1+0+3)/ (sqrt(14) sqrt(2))) = arccos(2/sqrt(28)) = arccos(1/sqrt(7)).$,
   )
 ]
 
@@ -386,9 +386,9 @@
 
 #solution[
   Jinými slovy máme najít ortogonální bázi ${boup(x), boup(y)}$ daného prostoru (prostor má dimensi 2, neboť počítáme lineaární obal dvou lineárně nezávislých vektorů). Nechť
-  $ boup(x) = mat(0; 0; 1), $
+  $ boup(x) = mat(0; 1; 1), $
   potom
   $
-    boup(y) = mat(1; 2; 3) - innerproduct(mat(1; 2; 3), mat(0; 0; 1))/innerproduct(mat(0; 0; 1), mat(0; 0; 1)) mat(0; 0; 1) = mat(1; 2; 3) - 3 mat(0; 0; 1) = mat(1; 2; 0).
+    boup(y) = mat(1; 2; 3) - innerproduct(mat(1; 2; 3), mat(0; 1; 1))/innerproduct(mat(0; 1; 1), mat(0; 1; 1)) mat(0; 1; 1) = mat(1; 2; 3) - 5/2 mat(0; 1; 1) = mat(1; 4/2; 6/2) - mat(0; 5/2; 5/2) = mat(1; -1/2; 1/2).
   $
 ]
