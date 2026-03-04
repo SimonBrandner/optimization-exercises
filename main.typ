@@ -224,7 +224,7 @@
 
 #exercise[
   Máme vektory $boup(x) = mat(1; 2; 3)$ a $boup(y) = mat(−1; 0; 1)$. Spočítejte
-  + délku vektoru $boup(x)$
+  + délku vektoru $boup(x)$,
   + vzdálenost bodů $boup(x)$ a $boup(y)$,
   + úhel mezi vektory $boup(x)$ a $boup(y)$.
 ]
