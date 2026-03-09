@@ -558,7 +558,7 @@
 ]
 
 #exercise[
-  Určete definitnost těchto symetrických matic (a disutujte možné postupy):
+  Určete definitnost těchto symetrických matic (a diskutujte možné postupy):
   + $mat(1, 2; 2, 1)$,#v(10pt)
   + $mat(2, 1; 1, 2)$,#v(10pt)
   + $mat(0, 1; 1, 0)$,#v(10pt)
@@ -595,7 +595,7 @@
   $
     boup(A)_s = 1/2 (boup(A) + boup(A)^T) = mat(1, -1/2; -1/2, -4).
   $
-  Hodnoty jejích hlavních minorů jsou $1$ a $-17/4$, je tedy indefinitní definitní. Neplatí tedy (a), (b), ani (c).
+  Hodnoty jejích hlavních minorů jsou $1$ a $-17/4$, matice je tedy indefinitní. Neplatí tedy (a), (b), ani (c).
 ]
 
 #exercise[
@@ -609,7 +609,7 @@
                 x^2 - 3/2 x y - 3/2 x y + y^2 - 1 & = & 0 & \
     mat(x, y) mat(1, -3/2; -3/2, 1) mat(x; y) - 1 & = & 0 & .
   $
-  Matice $boup(A)$ je regulární (její determinant je $-5/4 != 0$), a tedy množina obsauje nekonečně mnoho bodů. Hlavní minory matice $boup(A)$ jsou $1$ a $-5/4$, matice je tedy indefinitní, tudíž se jedná o hyperbolu.
+  Hlavní minory matice $boup(A)$ jsou $1$ a $-5/4$, matice je tedy indefinitní, tudíž se jedná o hyperbolu, není-li degenerovaná.
 ]
 
 #exercise(number: 8)[
