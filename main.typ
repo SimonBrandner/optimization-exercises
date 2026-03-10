@@ -25,3 +25,4 @@
 #include "sections/orthogonality.typ"
 #include "sections/least_squares.typ"
 #include "sections/quadratic_forms.typ"
+#include "sections/spectral_and_singular_decomposition.typ"
