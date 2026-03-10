@@ -505,7 +505,7 @@
       $
     ],
     [
-      Vektory jejichž lineární obal je v zadání jsou lineárně nezávislé (to lze ověřit pomocí GEM), tudíž $dim(x^bot) = 1$, je pak snadné vidět, že $X^bot = "span"mat(0; 1; 0; 0;)$. Označme
+      Vektory, jejichž lineární obal je v zadání, jsou lineárně nezávislé (to lze ověřit pomocí GEM), tudíž $dim(x^bot) = 1$, je pak snadné vidět, že $X^bot = "span"mat(0; 1; 0; 0;)$. Označme
       $ boup(A) = mat(0; 1; 0; 0), $
       projektor na tento podprostor je tedy:
       $
