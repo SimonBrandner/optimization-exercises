@@ -164,6 +164,6 @@
 #exercise[
   Jsou-li $boup(x)_1, dots , boup(x)_k$ sloupce matice $boup(X)$, dokažte tyto rovnosti:
   $
-    tr(boup(X)^T boup(A) boup(X)) = innerproduct(boup(A) boup(X), boup(X)) = innerproduct(boup(A), boup(X) boup(X)^T) = boup(x)_1^T A boup(x)_1 + dots.c + boup(x)_k^T boup(A) boup(x)_k.
+    tr(boup(X)^T boup(A) boup(X)) = innerproduct(boup(A) boup(X), boup(X)) = innerproduct(boup(A), boup(X) boup(X)^T) = boup(x)_1^T boup(A) boup(x)_1 + dots.c + boup(x)_k^T boup(A) boup(x)_k.
   $
 ]
