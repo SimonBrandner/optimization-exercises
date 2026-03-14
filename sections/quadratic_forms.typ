@@ -48,20 +48,20 @@
   #enum(
     enum.item(
       2,
-    )[Hodnoty hlavních minorů jsou $2$ a $3$, jsou tedy kladné a matice je positivně definitní.],
+    )[Hodnoty vůdčích hlavních minorů jsou $2$ a $3$, jsou tedy kladné a matice je positivně definitní.],
     enum.item(
       6,
-    )[Hodnoty hlavních minorů jsou $3, 5$ a $12$, jsou tedy kladné a matice je positivně definitní.],
+    )[Hodnoty vůdčích hlavních minorů jsou $3, 5$ a $12$, jsou tedy kladné a matice je positivně definitní.],
     enum.item(
       7,
-    )[Hodnoty prvních dvou hlavních minorů jsou $-2$ a $-6$, matice je tedy indefinitní.],
+    )[První dva diagonální prkvy matice jsou $-2$ a $3$, matice tedy není positivně ani negativně semidefinitní, je tudíž indefinitní.],
   )
 ]
 
 #exercise[
   Máme matici $boup(A) = mat(1, -3; 2, -4)$. Která z následujících tvrzení jsou pravdivá?
-  + Výraz $boup(x)^T boup(A) x$ je nezáporný pro každé $boup(x) in RR^2$.
-  + Výraz $boup(x)^T boup(A) x$ je nekladný pro každé $boup(x) in RR^2$.
+  + Výraz $boup(x)^T boup(A) boup(x)$ je nezáporný pro každé $boup(x) in RR^2$.
+  + Výraz $boup(x)^T boup(A) boup(x)$ je nekladný pro každé $boup(x) in RR^2$.
   + Funkce $f(boup(x)) = boup(x)^T boup(A) x$ má v bodě $boup(x) = boup(0)$ extrém.
 ]
 
@@ -70,7 +70,7 @@
   $
     boup(A)_s = 1/2 (boup(A) + boup(A)^T) = mat(1, -1/2; -1/2, -4).
   $
-  Hodnoty jejích hlavních minorů jsou $1$ a $-17/4$, matice je tedy indefinitní. Neplatí tedy (a), (b), ani (c).
+  Hodnoty na její diagonále jsou $1$ a $-4$, matice je tedy indefinitní (nemůže být positivně ani negativně semidefinitní). Neplatí tedy (a), (b), ani (c).
 ]
 
 #exercise[
@@ -84,7 +84,7 @@
                 x^2 - 3/2 x y - 3/2 x y + y^2 - 1 & = & 0 & \
     mat(x, y) mat(1, -3/2; -3/2, 1) mat(x; y) - 1 & = & 0 & .
   $
-  Hlavní minory matice $boup(A)$ jsou $1$ a $-5/4$, matice je tedy indefinitní, tudíž se jedná o hyperbolu, není-li degenerovaná.
+  Vůdčí hlavní minory matice $boup(A)$ jsou $1$ a $-5/4$, matice je tedy indefinitní (nemůže být positivně ani negativně semidefinitní). Neboť je indefinitní, jedná se o (degenerovaný) hyperboloid. Neboť má matice přesně dvě vlastní čísla a z indefinitnosti víme, že musí mít alespoň jedno kladné a alespoň jedno záporné, nemůže mít žádné nulové. Tento hyperboloid tedy vlivem matice nemůže být degenerovaný#footnote[Tato úvaha platí pro indefinitní kvadratické formy $RR^2 -> RR$ obecně.]. Hyperboloid nemůže být degenerovaný ani vlivem absolutního členu, protože je nenulový. Jedná se tedy o (nedegenerovaný) hyperboloid v $RR^2$, resp. o hyperbolu.
 ]
 
 #exercise(number: 8)[
@@ -99,16 +99,16 @@
   Nazvěme matici, o které je řeč, $boup(A)$.
   #enum(
     [
-      Hodnota prvního hlavního minoru je $1 > 0$, $boup(A)$ tedy není negativně (semi)definitní. Platí $boup(e)_3^T boup(A) boup(e)_3 = 0$, matice $boup(A)$ tedy nemůže být positivně definitní. Matice $boup(A)$ je tedy buď positivně semidefinitní, nebo indefinitní.
+      Hodnota prvního vůdčího hlavního minoru je $1 > 0$, $boup(A)$ tedy není negativně (semi)definitní. Platí $boup(e)_3^T boup(A) boup(e)_3 = 0$, matice $boup(A)$ tedy nemůže být positivně definitní. Matice $boup(A)$ je tedy buď positivně semidefinitní, nebo indefinitní.
     ],
     [
-      Hodnota prvního hlavního minoru je $1 > 0$, $boup(A)$ tedy není negativně (semi)definitní. Matice $boup(A)$ je tedy buď positivně (semi)definitní, nebo indefinitní.
+      Hodnota prvního vůdčího hlavního minoru je $1 > 0$, $boup(A)$ tedy není negativně (semi)definitní. Matice $boup(A)$ je tedy buď positivně (semi)definitní, nebo indefinitní.
     ],
     [
-      Hodnota prvního hlavního minoru je $-4 < 0$, $boup(A)$ tedy není positivně (semi)definitní. Matice $boup(A)$ je tedy buď negativně (semi)definitní, nebo indefinitní.
+      Hodnota prvního vůdčího hlavního minoru je $-4 < 0$, $boup(A)$ tedy není positivně (semi)definitní. Matice $boup(A)$ je tedy buď negativně (semi)definitní, nebo indefinitní.
     ],
     [
-      Hodnota prvního hlavního minoru je $-1 < 0$, není tedy positivně (semi)definitní. Platí $boup(e)_3^T boup(A) boup(e)_3 = 0$, matice $boup(A)$ tedy nemůže být negativně definitní. Matice $boup(A)$ je tedy buď negativně semidefinitní, nebo indefinitní.
+      Hodnota prvního vůdčího hlavního minoru je $-1 < 0$, není tedy positivně (semi)definitní. Platí $boup(e)_3^T boup(A) boup(e)_3 = 0$, matice $boup(A)$ tedy nemůže být negativně definitní. Matice $boup(A)$ je tedy buď negativně semidefinitní, nebo indefinitní.
     ],
   )
 ]
