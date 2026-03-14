@@ -161,6 +161,19 @@
   omezení, že $boup(x)$ musí být kolmé na vlastní vektory $boup(v)_1, dots , boup(v)_k$. Tedy maximalizujeme $boup(x)^T boup(A) boup(x)$ přes $boup(x) in RR^n$ za podmínek $innerproduct(boup(x), boup(x)) = 1$ a $innerproduct(boup(v)_1, boup(x)) = dots.c = innerproduct(boup(v)_k, boup(x)) = 0$. Dokažte, že optimální hodnota této úlohy je $lambda_(k+1)$ a optimum se nabývá pro $boup(x) = boup(v)_(k + 1)$.
 ]
 
+#solution[
+  Chceme maximalizovat hodnotu $boup(x)^T boup(A) boup(x)$ tak, že $boup(x) in "span"{boup(v)_(k+1), dots, boup(v)_n}$ a $norm(boup(x)) = 1$. Použijme spektrální rozklad:
+  $
+    boup(x)^T boup(A) boup(x) = boup(x)^T boup(V) boup(Lambda) boup(V)^T boup(x) = boup(y)^T boup(Lambda) boup(y),
+  $
+  kde $boup(y) = boup(V)^T boup(x)$. Neboť $boup(x) in "span"{boup(v)_(k+1), dots, boup(v)_n}$ a $boup(V)$ je ortogonální, platí $boup(y) in "span"{boup(e)_(k+1), dots, boup(e)_n}$ a $norm(boup(y)) = 1$. To jest, platí
+  $
+    boup(y)^T boup(Lambda) boup(y) = sum_(k+1)^n y_i^2 lambda_i, space "kde" sum_(k+1)^n y_i^2 = 1.
+  $
+
+  Neboť $lambda_i$ je maximální pro $i = k + 1$ (vlastní čísla jsou řazena sestupně), vidíme, že $lambda_(k+1)$ je optimem s argumentem $boup(x) = boup(V) boup(y) = boup(V) boup(e)_(k+1) = boup(v)_(k+1)$.
+]
+
 #exercise[
   Jsou-li $boup(x)_1, dots , boup(x)_k$ sloupce matice $boup(X)$, dokažte tyto rovnosti:
   $
