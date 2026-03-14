@@ -84,7 +84,7 @@
                 x^2 - 3/2 x y - 3/2 x y + y^2 - 1 & = & 0 & \
     mat(x, y) mat(1, -3/2; -3/2, 1) mat(x; y) - 1 & = & 0 & .
   $
-  Vůdčí hlavní minory matice $boup(A)$ jsou $1$ a $-5/4$, matice je tedy indefinitní (nemůže být positivně ani negativně semidefinitní). Neboť je indefinitní, jedná se o (degenerovaný) hyperboloid. Neboť má matice přesně dvě vlastní čísla a z indefinitnosti víme, že musí mít alespoň jedno kladné a alespoň jedno záporné, nemůže mít žádné nulové. Tento hyperboloid tedy vlivem matice nemůže být degenerovaný#footnote[Tato úvaha platí pro indefinitní kvadratické formy $RR^2 -> RR$ obecně.]. Hyperboloid nemůže být degenerovaný ani vlivem absolutního členu, protože je nenulový. Jedná se tedy o (nedegenerovaný) hyperboloid v $RR^2$, resp. o hyperbolu.
+  Vůdčí hlavní minory matice $boup(A)$ jsou $1$ a $-5/4$, matice je tedy indefinitní (nemůže být positivně ani negativně semidefinitní). Neboť jde o kvadratickou formu $RR^2 -> RR$, jejíž matice je indefinitní, jedná se o (degenerovanou) hyperbolu. Neboť má matice přesně dvě vlastní čísla a z indefinitnosti víme, že musí mít alespoň jedno kladné a alespoň jedno záporné, nemůže mít žádné nulové. Tato hyperbola tedy vlivem matice nemůže být degenerovaná#footnote[Tato úvaha platí pro indefinitní kvadratické formy $RR^2 -> RR$ obecně.]. Nemůže být degenerovaná ani vlivem absolutního členu, protože je nenulový. Jedná se tedy o nedegenerovanou hyperbolu.
 ]
 
 #exercise(number: 8)[
