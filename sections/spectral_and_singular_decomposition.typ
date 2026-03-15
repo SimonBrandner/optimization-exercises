@@ -2,6 +2,7 @@
 #import "@preview/cetz:0.4.2"
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 #import "../utils.typ": *
+#import "@local/simplex-template:0.1.0": light-color
 
 = Spektrální a singulární rozklad
 
@@ -178,5 +179,54 @@
   Jsou-li $boup(x)_1, dots , boup(x)_k$ sloupce matice $boup(X)$, dokažte tyto rovnosti:
   $
     tr(boup(X)^T boup(A) boup(X)) = innerproduct(boup(A) boup(X), boup(X)) = innerproduct(boup(A), boup(X) boup(X)^T) = boup(x)_1^T boup(A) boup(x)_1 + dots.c + boup(x)_k^T boup(A) boup(x)_k.
+  $
+]
+
+#solution[
+  Nejprve důkaz provedeme netradičně, ale elegantně, pomocí grafického kalkulu pro multilineární zobrazení#footnote[
+    O grafické notaci pro multilineární zobrazení se lze např. dočíst v Dodatku A skript #link("https://math.fel.cvut.cz/en/people/velebil/akla.html")[Abstraktní a konkrétní lineární algebra]. O notaci pro stopu a skalární součin se lze dočíst v článku #link("https://arxiv.org/pdf/2411.16094")[Very Basics of Tensors with Graphical Notations: Unfolding, Calculations, and Decompositions]. Tyto zdroje pojednávají specificky o~tensorech, ale situace je v našem případě podobná. Je ale třeba si dát pozor na to, že můžeme spojovat jen struny odpovídající stejným prostorům.
+  ]. Matice jsou v tomto kalkulu reprezentovány obdelníčky s dvěmi strunami, jednou (kovariantní) mířící dolů a druhou (kontravariantní) mířící nahoru. Součin matic $boup(A) boup(B)$ píšeme jako spojení kontravariantní struny matice $boup(A)$ s kovariantní strunou matice~$boup(B)$. Stopu matice počítáme spojením její kovariantní a kontravariantní struny (viz levá strana první rovnosti). Výpočet skalárního součinu dvou rozměrově odpovídajících si zobrazení je reprezentován spojením odpovídajících dvojic strun metrickým (ko)tensorem (viz levá a pravá strana druhé rovnosti). Metrický (ko)tensor je reprezentován ohnutou hranou.
+
+  První rovnost dostaneme jednoduše tím, že $boup(X)^T$ "pošleme" nahoru skrz metrický tensor, což způsobí transponování; na druhé straně rovnosti tedy již vidíme $boup(X)$ v pravé straně diagramu. Druhou rovnost dokážeme analogicky tím, že "pošleme" dolů $boup(X)$ skrz metrický kotensor, čímž dostaneme $boup(X)^T$ v pravé straně diagramu.
+
+  #align(center, diagram(
+    node-shape: rect,
+    node-stroke: black,
+    node-corner-radius: 3pt,
+    edge-corner-radius: 33pt,
+    spacing: (3em, 2em),
+    cell-size: (30pt, 0em),
+    node-fill: luma(220),
+    $
+      node(boup(X)^T, fill: #red.lighten(60%)) edge("d") &&& node(boup(X), fill: #red.lighten(60%)) && node(boup(X), fill: #red.lighten(60%)) edge("u,l,dd") \
+      node(boup(A), fill: #blue.lighten(60%)) edge("d") edge("rrr", =, label-pos: #(50% - 10pt), label-side: #center, stroke: #none) && node(boup(A), fill: #blue.lighten(60%)) edge("d")& edge("r", =, label-side: #center, stroke: #none) edge("uu,l,dd") & node(boup(A), fill: #blue.lighten(60%)) edge("dd,r,u") \
+      node(boup(X), fill: #green.lighten(60%)) edge("d,r,uuuu,l,d") && node(boup(X), fill: #green.lighten(60%)) edge("d,r,uu") &&& node(boup(X)^T, fill: #green.lighten(60%)) edge("uu")
+    $,
+  ))
+
+  Je nutné podotknout, že pokud bychom pracovali s jinou než kanonickou bází, situace by se komplikovala, neboť metrický (ko)tensor provádí dualizaci, která k transposici koreseponduje pouze v této bázi.
+
+  Alternativou je důkaz pomocí Einsteinovy sumační konvence pro milovníky indexů. V Ensteinově notaci se výpočet stopy matice $boup(A)$ provádí tak, že kotraktujeme matice s ní samotnou,
+  $
+    tr(boup(A)) = tr((a^i_j)) = (a^i_i) = (g_(i k) a^i_j g^(j k)),
+  $
+  to lze zapsat i pomocí metrického tensoru a kontensoru, čehož využijeme později.
+
+
+  Výpočet skalárního součinu matic $boup(A)$ a $boup(B)$ se pak provádí tak, že metrickým tensorem kontraktujeme kovariantní indexy a metrickým kotensorem kontraktujeme kontravariantní indexy, tedy
+  $
+    innerproduct(boup(A), boup(B)) = innerproduct((a^i_j), (b^k_l)) = (g_(i k) a^i_j b^k_l g^(j l)).
+  $
+
+  Důkaz můžeme tedy provést následovně:
+  $
+    underbrace(g_(i m) (x^T)^i_r a^r_j x^j_l g^(l m), tr(boup(X)^T boup(A) boup(X))) &= g_(i m) g^(i p) x^o_p g_(r o) a^r_j x^j_l g^(l m) = \
+    &= underbrace(x^o_m g_(r o) a^r_j x^j_l g^(l m), innerproduct(boup(A) boup(X), boup(X))) = \
+    &= x^o_m g_(r o) a^r_j g^(j i) (x^T)^q_i g_(l q) g^(l m) = \
+    &= x^o_m g_(r o) a^r_j g^(j i) (x^T)^m_i = \
+    &= underbrace(a^r_j g_(r o) x^o_m (x^T)^m_i g^(j i), innerproduct(boup(A), boup(X) boup(X)^T)) = \
+    &= a^r_j g_(r o) g^(o l) x^q_l (x^T)^p_q g_(i p) g^(j i) = \
+    &= a^r_j x^q_r (x^T)^j_q = \
+    &= underbrace(x^q_r a^r_j (x^T)^j_q, sum_(q=1)^k boup(x)^T_q boup(A) boup(x)_q).
   $
 ]
