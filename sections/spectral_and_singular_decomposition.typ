@@ -157,7 +157,7 @@
 #exercise(number: 13)[
   Přidejme k úloze
   $
-    max{boup(x)^T boup(A) boup(x) | boup(x) in RR^n, innerproduct(boup(x), boup(x)) = 1}
+    max_boup(x) {boup(x)^T boup(A) boup(x) | boup(X) in RR^(n times n), boup(X) = boup(X)^T, boup(x) in RR^n, innerproduct(boup(x), boup(x)) = 1}
   $
   omezení, že $boup(x)$ musí být kolmé na vlastní vektory $boup(v)_1, dots , boup(v)_k$. Tedy maximalizujeme $boup(x)^T boup(A) boup(x)$ přes $boup(x) in RR^n$ za podmínek $innerproduct(boup(x), boup(x)) = 1$ a $innerproduct(boup(v)_1, boup(x)) = dots.c = innerproduct(boup(v)_k, boup(x)) = 0$. Dokažte, že optimální hodnota této úlohy je $lambda_(k+1)$ a optimum se nabývá pro $boup(x) = boup(v)_(k + 1)$.
 ]
@@ -167,12 +167,12 @@
   $
     boup(x)^T boup(A) boup(x) = boup(x)^T boup(V) boup(Lambda) boup(V)^T boup(x) = boup(y)^T boup(Lambda) boup(y),
   $
-  kde $boup(y) = boup(V)^T boup(x)$. Protože $boup(x) in "span"{boup(v)_(k+1), dots, boup(v)_n}$ a $boup(V)$ je ortogonální, platí $boup(y) in "span"{boup(e)_(k+1), dots, boup(e)_n}$ a $norm(boup(y)) = 1$. To jest, platí
+  kde $boup(y) = boup(V)^T boup(x)$. Protože $boup(x) in "span"{boup(v)_(k+1), dots, boup(v)_n}$ a $boup(V)$ je ortogonální (a tedy isometrie), platí $boup(y) in "span"{boup(e)_(k+1), dots, boup(e)_n}$ a $norm(boup(y)) = 1$. To jest, platí
   $
     boup(y)^T boup(Lambda) boup(y) = sum_(k+1)^n y_i^2 lambda_i, space "kde" sum_(k+1)^n y_i^2 = 1.
   $
 
-  Neboť $lambda_i$ je maximální pro $i = k + 1$ (vlastní čísla jsou řazena sestupně), vidíme, že $lambda_(k+1)$ je optimem s argumentem $boup(x) = boup(V) boup(y) = boup(V) boup(e)_(k+1) = boup(v)_(k+1)$.
+  Z toho, že $lambda_i$ je maximální pro $i = k + 1$ (vlastní čísla jsou řazena sestupně), vidíme, že $lambda_(k+1)$ je optimem. Argumentem optima je $boup(y) = boup(e)_(k+1)$, resp. $boup(x) = boup(V) boup(y) = boup(V) boup(e)_(k+1) = boup(v)_(k+1)$.
 ]
 
 #exercise[
