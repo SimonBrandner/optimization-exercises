@@ -167,7 +167,7 @@
   $
     boup(x)^T boup(A) boup(x) = boup(x)^T boup(V) boup(Lambda) boup(V)^T boup(x) = boup(y)^T boup(Lambda) boup(y),
   $
-  kde $boup(y) = boup(V)^T boup(x)$. Neboť $boup(x) in "span"{boup(v)_(k+1), dots, boup(v)_n}$ a $boup(V)$ je ortogonální, platí $boup(y) in "span"{boup(e)_(k+1), dots, boup(e)_n}$ a $norm(boup(y)) = 1$. To jest, platí
+  kde $boup(y) = boup(V)^T boup(x)$. Protože $boup(x) in "span"{boup(v)_(k+1), dots, boup(v)_n}$ a $boup(V)$ je ortogonální, platí $boup(y) in "span"{boup(e)_(k+1), dots, boup(e)_n}$ a $norm(boup(y)) = 1$. To jest, platí
   $
     boup(y)^T boup(Lambda) boup(y) = sum_(k+1)^n y_i^2 lambda_i, space "kde" sum_(k+1)^n y_i^2 = 1.
   $
@@ -185,7 +185,7 @@
 #solution[
   Nejprve důkaz provedeme netradičně, ale elegantně, pomocí grafického kalkulu pro multilineární zobrazení#footnote[
     O grafické notaci pro multilineární zobrazení se lze např. dočíst v Dodatku A skript #link("https://math.fel.cvut.cz/en/people/velebil/akla.html")[Abstraktní a konkrétní lineární algebra]. O notaci pro stopu a skalární součin se lze dočíst v článku #link("https://arxiv.org/pdf/2411.16094")[Very Basics of Tensors with Graphical Notations: Unfolding, Calculations, and Decompositions]. Tyto zdroje pojednávají specificky o~tensorech, ale situace je v našem případě podobná. Je ale třeba si dát pozor na to, že můžeme spojovat jen struny odpovídající stejným prostorům.
-  ]. Matice jsou v tomto kalkulu reprezentovány obdelníčky s dvěmi strunami, jednou (kovariantní) mířící dolů a druhou (kontravariantní) mířící nahoru. Součin matic $boup(A) boup(B)$ píšeme jako spojení kontravariantní struny matice $boup(A)$ s kovariantní strunou matice~$boup(B)$. Stopu matice počítáme spojením její kovariantní a kontravariantní struny (viz levá strana první rovnosti). Výpočet skalárního součinu dvou rozměrově odpovídajících si zobrazení je reprezentován spojením odpovídajících dvojic strun metrickým (ko)tensorem (viz levá a pravá strana druhé rovnosti). Metrický (ko)tensor je reprezentován ohnutou hranou.
+  ]. Matice jsou v tomto kalkulu reprezentovány obdelníčky s dvěma strunami, jednou (kovariantní) mířící dolů a druhou (kontravariantní) mířící nahoru. Součin matic $boup(A) boup(B)$ píšeme jako spojení kontravariantní struny matice $boup(A)$ s kovariantní strunou matice~$boup(B)$. Stopu matice počítáme spojením její kovariantní a kontravariantní struny (viz levá strana první rovnosti). Výpočet skalárního součinu dvou rozměrově odpovídajících si zobrazení je reprezentován spojením odpovídajících dvojic strun metrickým (ko)tensorem (viz levá a pravá strana druhé rovnosti). Metrický (ko)tensor je reprezentován ohnutou hranou.
 
   První rovnost dostaneme jednoduše tím, že $boup(X)^T$ "pošleme" nahoru skrz metrický tensor, což způsobí transponování; na druhé straně rovnosti tedy již vidíme $boup(X)$ v pravé straně diagramu. Druhou rovnost dokážeme analogicky tím, že "pošleme" dolů $boup(X)$ skrz metrický kotensor, čímž dostaneme $boup(X)^T$ v pravé straně diagramu.
 
@@ -204,7 +204,7 @@
     $,
   ))
 
-  Je nutné podotknout, že pokud bychom pracovali s jinou než kanonickou bází, situace by se komplikovala, neboť metrický (ko)tensor provádí dualizaci, která k transposici koreseponduje pouze v této bázi.
+  Je nutné podotknout, že pokud bychom pracovali s jinou než kanonickou bází, situace by se komplikovala, neboť metrický (ko)tensor provádí dualizaci, která k transposici koresponduje pouze v této bázi.
 
   Alternativou je důkaz pomocí Einsteinovy sumační konvence pro milovníky indexů. V Ensteinově notaci se výpočet stopy matice $boup(A)$ provádí tak, že kotraktujeme matice s ní samotnou,
   $
