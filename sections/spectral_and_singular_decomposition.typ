@@ -194,13 +194,15 @@
     node-stroke: black,
     node-corner-radius: 3pt,
     edge-corner-radius: 33pt,
+    node-outset: 0pt,
     spacing: (3em, 2em),
     cell-size: (30pt, 0em),
     node-fill: luma(220),
     $
-      node(boup(X)^T, fill: #red.lighten(60%)) edge("d") &&& node(boup(X), fill: #red.lighten(60%)) && node(boup(X), fill: #red.lighten(60%)) edge("u,l,dd") \
-      node(boup(A), fill: #blue.lighten(60%)) edge("d") edge("rrr", =, label-pos: #(50% - 10pt), label-side: #center, stroke: #none) && node(boup(A), fill: #blue.lighten(60%)) edge("d")& edge("r", =, label-side: #center, stroke: #none) edge("uu,l,dd") & node(boup(A), fill: #blue.lighten(60%)) edge("dd,r,u") \
-      node(boup(X), fill: #green.lighten(60%)) edge("d,r,uuuu,l,d") && node(boup(X), fill: #green.lighten(60%)) edge("d,r,uu") &&& node(boup(X)^T, fill: #green.lighten(60%)) edge("uu")
+      #let tensor(..args) = node(..args, width: 25pt)
+      tensor(boup(X)^T, fill: #red.lighten(60%)) edge("d") &&& tensor(boup(X), fill: #red.lighten(60%)) && tensor(boup(X), fill: #red.lighten(60%)) edge("u,l,dd") \
+      tensor(boup(A), fill: #blue.lighten(60%)) edge("d") edge("rrr", =, label-pos: #(50% - 10pt), label-side: #center, stroke: #none) && tensor(boup(A), fill: #blue.lighten(60%)) edge("d")& edge("r", =, label-side: #center, stroke: #none) edge("uu,l,dd") & tensor(boup(A), fill: #blue.lighten(60%)) edge("dd,r,u") \
+      tensor(boup(X), fill: #green.lighten(60%)) edge("d,r,uuuu,l,d") && tensor(boup(X), fill: #green.lighten(60%)) edge("d,r,uu") &&& tensor(boup(X)^T, fill: #green.lighten(60%)) edge("uu")
     $,
   ))
 
