@@ -4,7 +4,7 @@
 = Derivace
 
 #exercise[
-  Načrtněte několik vrstevnic (připište k nim výšky) těchto funkcí dvou proměných:
+  Načrtněte několik vrstevnic (připište k nim výšky) těchto funkcí dvou proměnných:
   #enum(
     spacing: 13pt,
     [$f mat(x_1; x_2) = 2x_1 + x_2$,],
