@@ -26,3 +26,5 @@
 #include "sections/least_squares.typ"
 #include "sections/quadratic_forms.typ"
 #include "sections/spectral_and_singular_decomposition.typ"
+#include "sections/derivative.typ"
+#include "sections/extrema_on_sets.typ"
