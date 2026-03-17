@@ -17,6 +17,15 @@
   )
 ]
 
+#solution[
+  #enum(
+    enum.item(2)[],
+    [],
+    [],
+    enum.item(6)[],
+  )
+]
+
 #exercise(number: 3)[
   Máme funkci $f: RR^2 -> RR$ s hodnotami $f mat(x; y) = ln(1 + x y)$. Máme bod $mat(x_0; y_0) = mat(1; 2)$.
   #enum(
@@ -28,6 +37,13 @@
     [Najděte gradient $Delta f mat(x; y)$ funkce $f$ v bodě $mat(x_0; y_0)$.],
     [Najděte řez a směrovou derivaci funkce $f$ v bodě $mat(x_0; y_0)$ ve směru $mat(1; -1)$.],
     [Najděte Hessovu matici funkce $f$ v bode $mat(x_0; y_0)$.],
+  )
+]
+
+#solution[
+  #enum(
+    enum.item(4)[],
+    enum.item(7)[],
   )
 ]
 

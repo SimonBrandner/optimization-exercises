@@ -20,3 +20,14 @@
 
   U každého extrému určete, zda je lokální/globální, volný/vázaný.
 ]
+
+#solution[
+  #enum(
+    [
+      #enum(
+        numbering: "(A)",
+        enum.item(3)[],
+      )
+    ],
+  )
+]
