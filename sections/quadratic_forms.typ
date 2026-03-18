@@ -108,7 +108,7 @@
       Hodnota prvního vůdčího hlavního minoru je $-4 < 0$, $boup(A)$ tedy není positivně (semi)definitní. Matice $boup(A)$ je tedy buď negativně (semi)definitní, nebo indefinitní.
     ],
     [
-      Hodnota prvního vůdčího hlavního minoru je $-1 < 0$, není tedy positivně (semi)definitní. Platí $boup(e)_3^T boup(A) boup(e)_3 = 0$, matice $boup(A)$ tedy nemůže být negativně definitní. Matice $boup(A)$ je tedy buď negativně semidefinitní, nebo indefinitní.
+      Hodnota hlavního minoru určeného indexy ${1}$ je $-1 < 0$ a hodnota hlavního minoru určeného indexy ${2}$ je $2 > 0$, matice je tedy indefinitní.
     ],
   )
 ]
