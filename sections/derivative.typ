@@ -1,4 +1,6 @@
 #import "@local/simplex-template:0.1.0": *
+#import "@preview/cetz:0.4.2": canvas, draw
+#import "@preview/cetz-plot:0.1.3": plot
 #import "../utils.typ": *
 
 = Derivace
@@ -19,10 +21,123 @@
 
 #solution[
   #enum(
-    enum.item(2)[],
-    [],
-    [],
-    enum.item(6)[],
+    enum.item(2)[
+      Lze vidět, že zafixováním $f vec(x_1, x_2)$ a úpravou dostaneme afinní funkci. Vrstevnice budou tedy přímky:
+      #align(center, canvas({
+        plot.plot(
+          axis-style: "school-book",
+          size: (6, 6),
+          x-label: $x_2$,
+          y-label: $x_1$,
+          x-tick-step: 1,
+          y-tick-step: 1,
+          y-min: -3,
+          y-max: 3,
+          {
+            let domain = (-3, 3)
+
+            for h in range(-3, 9, step: 3) {
+              plot.add(
+                x => h + 3 * x - 1,
+                label: $h = #h$,
+                domain: domain,
+              )
+            }
+          },
+        )
+      }))
+    ],
+    [
+      Můžeme si všimnout, že v proměnné $x_2$ máme úplnou volnost, zafixováním $f vec(x_1, x_2)$ pak dostaneme dva skaláry řešením dané kvadratické rovnice. Vrstevnice tedy budou dvojice rovnoběžných přímek:
+      #align(center, canvas({
+        plot.plot(
+          axis-style: "school-book",
+          size: (6, 6),
+          x-label: $x_2$,
+          y-label: $x_1$,
+          x-tick-step: 1,
+          y-tick-step: 1,
+          y-min: -3,
+          y-max: 3,
+          {
+            let domain = (-3, 3)
+            let colors = (red, green, blue)
+
+            for (h, color) in range(0, 6, step: 2).zip(colors) {
+              plot.add(
+                x => calc.sqrt(h),
+                label: $h = #h$,
+                domain: domain,
+                style: (stroke: color),
+              )
+              plot.add(
+                x => -calc.sqrt(h),
+                domain: domain,
+                style: (stroke: color),
+              )
+            }
+          },
+        )
+      }))
+    ],
+    [
+      Zjevně se jedná o diagonální positivně definitní kvadratickou formu dvou proměnných, vrstevnice tedy budou elipsy:
+      #align(center, canvas({
+        plot.plot(
+          axis-style: "school-book",
+          size: (6, 6),
+          x-label: $x_1$,
+          y-label: $x_2$,
+          x-tick-step: 1,
+          y-tick-step: 1,
+          y-min: -3,
+          y-max: 3,
+          {
+            for h in (1, 4, 9) {
+              plot.add-contour(
+                x-domain: (-3, 3),
+                y-domain: (-3, 3),
+                label: $h = #h$,
+                x-samples: 50,
+                y-samples: 50,
+                op: "<",
+                z: h,
+                (x_1, x_2) => calc.pow(x_1, 2) + 4 * calc.pow(x_2, 2),
+              )
+            }
+          },
+        )
+      }))
+    ],
+    enum.item(6)[
+      Po zafixováním $f vec(x_1, x_2)$ lze rovnost snadno upravit do vzorce pro hyperbolu:
+      #align(center, canvas({
+        plot.plot(
+          axis-style: "school-book",
+          size: (6, 6),
+          x-label: $x_1$,
+          y-label: $x_2$,
+          x-tick-step: 1,
+          y-tick-step: 1,
+          y-min: -3,
+          y-max: 3,
+          {
+            for h in range(1, 5) {
+              plot.add-contour(
+                x-domain: (-3, 3),
+                y-domain: (-3, 3),
+                label: $h = #h$,
+                x-samples: 50,
+                y-samples: 50,
+                op: (ploz-z, data-z) => calc.abs(ploz-z - data-z) < 0.17,
+                z: h,
+                (x_1, x_2) => x_1 * x_2,
+              )
+            }
+          },
+        )
+      }))
+    ],
   )
 ]
 
