@@ -122,6 +122,9 @@
           y-min: -3,
           y-max: 3,
           {
+            plot.add-hline(0, 0, style: (stroke: red), label: $h = 0$)
+            plot.add-vline(0, 0, style: (stroke: red))
+
             for h in range(1, 5) {
               plot.add-contour(
                 x-domain: (-3, 3),
@@ -184,12 +187,12 @@
     [
       Určíme derivaci $h'$ funkce $h$ v bodě $vec(-1, 1)$:
       $
-        h' vec(-1, 1) = eval((2 s^2 + 3 s d - d^2 + 5)')_vec(-1, 1) = eval(mat(3s - 2d, 4s + 3d))_vec(-1, 1) = mat(5, 1).
+        h' vec(-1, 1) = eval((2 s^2 + 3 s d - d^2 + 5)')_vec(-1, 1) = eval(mat(column-gap: #1em, 3s - 2d, 4s + 3d))_vec(-1, 1) = mat(5, 1).
       $
       Směr nejstrmějšího stoupání je tedy $vec(5, 1)$.
     ],
     [
-      Strmost stoupíní v jihovýchodním směru $vec(1, -1)$ jako
+      Strmost stoupání v jihovýchodním směru $vec(1, -1)$ jako
 
       $
         (h' vec(-1, 1)) (1/norm(vec(1, -1)) vec(1, -1)) &= mat(5, 1) (1/sqrt(2) vec(1, -1)) = \
@@ -213,13 +216,13 @@
   $
   první derivaci,
   $
-    f' vec(x_0, y_0) = f' vec(1, -2) &= mat(6 y^2 - 6 x^2, 12 x y - 9 y^2) |_vec(1, -2) = \
+    f' vec(x_0, y_0) = f' vec(1, -2) &= mat(column-gap: #1em, 6 y^2 - 6 x^2, 12 x y - 9 y^2) |_vec(1, -2) = \
     &= mat(24 - 6, -24 - 36) = \
     &= mat(18, -60),
   $
   a druhou derivaci,
   $
-    f'' vec(x_0, y_0) = f'' vec(1, -2) &= mat(6 y^2 - 6 x^2, 12 x y - 9 y^2)' |_vec(1, -2) = \
+    f'' vec(x_0, y_0) = f'' vec(1, -2) &= mat(column-gap: #1em, 6 y^2 - 6 x^2, 12 x y - 9 y^2)' |_vec(1, -2) = \
     &= eval(mat(- 12 x, 12 y; 12 y, 12 x - 18 y))_vec(1, -2) = \
     &= mat(-12, -24; -24, 48).
   $
