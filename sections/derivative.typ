@@ -148,8 +148,8 @@
     [Je funkce $f$ v bodě $mat(x_0; y_0)$ spojitá?],
     [Je funkce $f$ v bodě $mat(x_0; y_0)$ spojitě diferencovatelná?],
     [Je funkce $f$ v bodě $mat(x_0; y_0)$ diferencovatelná?],
-    [Najděte totální derivaci (Jacobiho matici) $f' mat(x; y)$ v bodě $mat(x_0; y_0)$.],
-    [Najděte gradient $Delta f mat(x; y)$ funkce $f$ v bodě $mat(x_0; y_0)$.],
+    [Najděte totální derivaci (Jacobiho matici) $f'$ funkce $f$ v bodě $mat(x_0; y_0)$.],
+    [Najděte gradient $Delta f$ funkce $f$ v bodě $mat(x_0; y_0)$.],
     [Najděte řez a směrovou derivaci funkce $f$ v bodě $mat(x_0; y_0)$ ve směru $mat(1; -1)$.],
     [Najděte Hessovu matici funkce $f$ v bode $mat(x_0; y_0)$.],
   )
@@ -157,17 +157,77 @@
 
 #solution[
   #enum(
-    enum.item(4)[],
-    enum.item(7)[],
+    enum.item(4)[
+      $
+        f' vec(x_0, y_0) = f' vec(1, 2) = eval((ln(1 + x y))')_vec(1, 2) = eval(mat(y/(1 + x y), x/(1 + x y)))_vec(1, 2) = mat(2/3, 1/3).
+      $
+    ],
+    enum.item(7)[
+      $
+        f'' vec(x_0, y_0) = f'' vec(1, 2) = eval(mat(y/(1 + x y), x/(1 + x y))')_mat(1; 2)
+        &= eval(mat((-y^2)/(1+x y)^2, 1/(1 + x y)^2; 1/(1 + x y)^2, (-x^2)/(1 + x y)^2))_vec(1, 2) = \
+        &= mat(-4/9, 1/9; 1/9, -1/9)
+        .
+      $
+    ],
   )
 ]
 
 #exercise(number: 10)[
-  Nadmořská výška krajiny je dána vzorcem $h(d, s) = 2 s^2 + 3 s d - d^2 + 5$, kde $d$ je zeměpisná délka (zvětšuje se od západu k východu) a $s$ je zeměpisná šířka (zvětšuje se od jihu k severu). V bodě $mat(d; s) = mat(−1; 1)$ určete
+  Nadmořská výška krajiny je dána vzorcem $h mat(d; s) = 2 s^2 + 3 s d - d^2 + 5$, kde $d$ je zeměpisná délka (zvětšuje se od západu k východu) a $s$ je zeměpisná šířka (zvětšuje se od jihu k severu). V bodě $mat(d; s) = mat(−1; 1)$ určete
   + směr nejstrmějšího stoupání terénu,
   + strmost terénu v jihovýchodním směru.
 ]
 
+#solution[
+  #enum(
+    [
+      Určíme derivaci $h'$ funkce $h$ v bodě $vec(-1, 1)$:
+      $
+        h' vec(-1, 1) = eval((2 s^2 + 3 s d - d^2 + 5)')_vec(-1, 1) = eval(mat(3s - 2d, 4s + 3d))_vec(-1, 1) = mat(5, 1).
+      $
+      Směr nejstrmějšího stoupání je tedy $vec(5, 1)$.
+    ],
+    [
+      Strmost stoupíní v jihovýchodním směru $vec(1, -1)$ jako
+
+      $
+        (h' vec(-1, 1)) (1/norm(vec(1, -1)) vec(1, -1)) &= mat(5, 1) (1/sqrt(2) vec(1, -1)) = \
+        &= 1/sqrt(2) mat(5, 1) vec(1, -1) = \
+        &= 4/sqrt(2) = \
+        &= 2 sqrt(2).
+      $
+
+    ],
+  )
+]
+
 #exercise(number: 13)[
-  Je dána funkce $f(x, y) = 6 x y^2 − 2 x^3 − 3 y^3$. V bodě $mat(x_0; y_0) = mat(1; −2)$ najděte Taylorův polynom nultého, prvního a druhého stupně.
+  Je dána funkce $f mat(x; y) = 6 x y^2 − 2 x^3 − 3 y^3$. V bodě $mat(x_0; y_0) = mat(1; −2)$ najděte Taylorův polynom nultého, prvního a druhého stupně.
+]
+
+#solution[
+  Nejprve v daném bodě vypočteme nultou derivaci,
+  $
+    f mat(x_0; y_0) = f mat(1; -2) = 24 - 2 + 24 = 46,
+  $
+  první derivaci,
+  $
+    f' vec(x_0, y_0) = f' vec(1, -2) &= mat(6 y^2 - 6 x^2, 12 x y - 9 y^2) |_vec(1, -2) = \
+    &= mat(24 - 6, -24 - 36) = \
+    &= mat(18, -60),
+  $
+  a druhou derivaci,
+  $
+    f'' vec(x_0, y_0) = f'' vec(1, -2) &= mat(6 y^2 - 6 x^2, 12 x y - 9 y^2)' |_vec(1, -2) = \
+    &= eval(mat(- 12 x, 12 y; 12 y, 12 x - 18 y))_vec(1, -2) = \
+    &= mat(-12, -24; -24, 48).
+  $
+
+  Nyní můžeme zapsat Taylorův polynom druhého řádu v daném bodě:
+  $
+    T_vec(x_0, y_0) mat(x; y) &= T_vec(1, -2) mat(x; y) = \
+    &= underbrace(overbrace(f vec(x_0, y_0), #text[Taylorův\ polynom\ 0. řádu]) + f' mat(x_0; y_0) vec(x - x_0, y - y_0), #[Taylorův polynom 1. řádu]) + 1/2 vec(x - x_0, y - y_0)^T f'' mat(x_0; y_0) vec(x - x_0, y - y_0) = \
+    &= 46 + mat(18, -60) vec(x - 1, y + 2) + 1/2 mat(x - 1, y + 2) mat(-12, -24; -24, 48) vec(x - 1, y + 2).
+  $
 ]
