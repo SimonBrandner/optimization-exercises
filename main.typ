@@ -28,3 +28,4 @@
 #include "sections/spectral_and_singular_decomposition.typ"
 #include "sections/derivative.typ"
 #include "sections/extrema_on_sets.typ"
+#include "sections/free_extrema.typ"
