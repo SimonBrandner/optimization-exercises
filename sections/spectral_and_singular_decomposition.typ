@@ -8,9 +8,9 @@
 
 #exercise[
   Spočítejte vlastní čísla a vlastní vektory matic níže. Pro symetrické matice určete jejich definitnost z vlastních čísel.
-  + $mat(1, 2; -1, -3)$,#v(10pt)
-  + $mat(1, 2; 1, 0)$,#v(10pt)
-  + $mat(1, 2; 2, 1)$,#v(10pt)
+  + $mat(1, 2; -1, -3)$,
+  + $mat(1, 2; 1, 0)$,
+  + $mat(1, 2; 2, 1)$,
   + $mat(2, 1; 1, 2)$.
 ]
 

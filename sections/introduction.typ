@@ -9,10 +9,10 @@
   Vyřešte následující úlohy, přičemž slovní úlohy nejdříve formulujte ve vhodném tvaru. Stačí vám k tomu papír, tužka, zdravý rozum a analýza funkcí jedné proměnné. Všimněte si, že některé úlohy lze převést na hledání extrémů funkce jedné proměnné na intervalu, což umíte z analýzy funkcí jedné proměnné.
   #enum(
     [
-      $min{x^2 + y^2 | x >= 0, x y > 1}$,#v(5pt)
+      $min{x^2 + y^2 | x >= 0, x y > 1}$,
     ],
     [
-      $min{(x-2)^2 + (y-1/2)^2 | x^2 <= 1, y^2 <= 1}$,#v(3pt)
+      $min{(x-2)^2 + (y-1/2)^2 | x^2 <= 1, y^2 <= 1}$,
     ],
     [
       $min{x | x in RR, x >= a_i forall i in {1, dots, n}}$ pro dané $a_1, dots, a_n in RR$,
