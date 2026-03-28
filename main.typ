@@ -29,3 +29,4 @@
 #include "sections/derivative.typ"
 #include "sections/extrema_on_sets.typ"
 #include "sections/free_extrema.typ"
+#include "sections/bound_extrema.typ"
