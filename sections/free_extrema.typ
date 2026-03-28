@@ -15,7 +15,7 @@
 #solution[]
 
 #exercise[
-  Pro následující funkce najděte stacionární body (dejte pozor při řešení stacionárních podmínek, ať vám nějaká řešení neuniknou). Pro každý stacionární bod určete, zda je to lokální minimum, lokální maximum, či ani jedno. Pokud to určit neumíte, odůvodněte.
+  Pro následující funkce najděte stacionární body (dejte pozor při řešení stacionárních podmínek, ať vám nějaká řešení neuniknou). Pro každý stacionární bod určete, zda je to lokální minimum, lokální maximum, či ani jedno. Pokud to určit neumíte, odůvodněte,
   #enum(
     [$f vec(x, y) = x (1 - 2/3 x^2 - y^2)$,],
     [$f vec(x, y) = 1/x + 1/y + x y$,],
@@ -40,7 +40,7 @@
 
 #solution[]
 
-#exercise[
+#exercise(number: 5)[
   Najděte všechna řešení rovnice $sin(x) = 1/2 x$ (sinus je v radiánech) na kalkulačce s největší přesností, jakou dokážete.
 ]
 
