@@ -79,7 +79,7 @@
           $
             norm(boup(a)) >= boup(a)^T (boup(v)/norm(boup(v))) = innerproduct(boup(a), boup(v))/norm(boup(v)),
           $
-          to jest $norm(boup(a)) norm(boup(v)) >= innerproduct(boup(a), boup(v))$, to je ale přesně Cauchyho–Schwarzova nerovnost.
+          to jest $norm(boup(a)) norm(boup(v)) >= innerproduct(boup(a), boup(v))$, to je ale přesně Cauchyho–Schwarzova nerovnost. Úvaha pro minimum je pak analogická.
         ],
       )
     ],
