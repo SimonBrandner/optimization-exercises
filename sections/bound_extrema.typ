@@ -3,6 +3,8 @@
 
 = Lokální extrémy vázané rovnostmi
 
+Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) způsobem a potom metodou Lagrangeových multiplilátorů. Při tom nemusíte ověřovat podmínky druhého řádu – lze-li ale usoudit na druh extrému nějakou snadnou úvahou, udělejte to.
+
 #exercise[
   Na kružnici $x^2 + y^2 = 1$ najděte lokální extrémy funkce
   #enum(
