@@ -12,7 +12,13 @@
   )
 ]
 
-#solution[]
+#solution[
+  #enum(
+    [Hessova matice je indefinitní, v daném bodě bude tedy sedlo.],
+    [Hessova matice je positivně semidefinitní, v daném bodě bude tedy neostré minimum.],
+    [Hessova matice je positivně definitní, v daném bodě bude tedy ostré minimum.],
+  )
+]
 
 #exercise[
   Pro následující funkce najděte stacionární body (dejte pozor při řešení stacionárních podmínek, ať vám nějaká řešení neuniknou). Pro každý stacionární bod určete, zda je to lokální minimum, lokální maximum, či ani jedno. Pokud to určit neumíte, odůvodněte,
@@ -29,8 +35,36 @@
 
 #solution[
   #enum(
-    enum.item(4)[],
-    [],
+    enum.item(4)[
+      První derivace je
+      $
+        f' vec(x, y) = mat(column-gap: #1em, 3 - 3 x^2 - 3 y^2, -6 x y).
+      $
+
+      Musíme vyřešit soustavu $f' vec(x, y) = mat(0, 0)$. To jest
+      $
+        3 - 3 x^2 - 3 y^2 & = 0, \
+                   -6 x y & = 0.
+      $
+      Z druhé rovnice vidíme, že $x = 0$, nebo $y = 0$. Pokud $x = 0$, potom dostáme rovnice $3 - 3 y^2 = 0$, tedy $y^2 = 1$, resp. $y = plus.minus 1$. Je-li $y = 0$, pak dostáváme analogickou rovnici $3 - 3 x^2$, to jest $x^2 = 1$, resp. $x = plus.minus 1$. Stacionární body jsou tedy $vec(0, plus.minus 1)$ a $vec(plus.minus 1, 0)$.
+    ],
+    [
+      První derivace je
+      $
+        f' vec(x, y) = mat(column-gap: #1em, 6 y^2 - 6 x, 12 x y - 12 y^3).
+      $
+      Musíme vyřešit soustavu $f' vec(x, y) = mat(0, 0)$. To jest
+      $
+            6 y^2 - 6 x & = 0, \
+        12 x y - 12 y^3 & = 0,
+      $
+      úpravou dostáváme
+      $
+        y^2 & = x, \
+        x y & = y^3.
+      $
+      Dosazením za $x$ z první rovnice vidíme, že druhá rovnost je splněna pro všechna $y in RR$. Stacionárními body tedy jsou $vec(t^2, t)$ pro všechna $t in RR$.
+    ],
   )
 ]
 
@@ -38,7 +72,27 @@
   Najděte lokální extrémy funkce $f : RR^n -> RR$ s hodnotami $f(boup(x)) = boup(a)^T boup(x) - sum_(i=1)^n x_i ln(x_i)$, kde $boup(a)$ je daný vektor.
 ]
 
-#solution[]
+#solution[
+  První derivace funkce $f$ podle $i$-té proměnné je
+  $
+    f'_i vec(x_i) = a_i - (1 ln(x_i) + x_i 1/x_i) = a_i - ln(x_i) - 1.
+  $
+  Musíme vyřešit soustavu $f'(boup(x)) = boup(0)$. Tedy
+  $
+    a_i - ln(x_i) - 1 & = 0 \
+              ln(x_i) & = a_i - 1 \
+                  x_i & = e^(a_i - 1)
+  $
+  pro $i in {1, dots, n}$. Označme řešení $boup(x)_0$.
+
+  Nyní vypočteme derivaci druhou:
+  $
+    f''_(i j) vec(x_(i j)) = - delta_(i j)/x_(i j).
+  $
+  Vidíme, že Hessova matice je diagonální, to, jestli je v bodě $boup(x)_0$ extrém (případně jaký) tedy závisí pouze na hodnotách
+  $-1/(e^(a_i - 1))$
+  pro $i in {1, dots, n}$. Protože exponenciela je na celém $RR$ kladná, budou všechny tyto hodnoty záporné, Hessova matice bude negativně definitní a v bodě $boup(x)_0$ máme tedy lokální maximum.
+]
 
 #exercise(number: 5)[
   Najděte všechna řešení rovnice $sin(x) = 1/2 x$ (sinus je v radiánech) na kalkulačce s největší přesností, jakou dokážete.
