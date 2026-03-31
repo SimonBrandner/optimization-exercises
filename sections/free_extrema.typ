@@ -111,4 +111,48 @@
   Najděte lokální extrém funkce $f vec(x, y) = x^2 − y + sin(y^2 − 2 x)$ čistou Newtonovou metodou. Počáteční odhad zvolte $vec(x_0, y_0) = vec(1, 1)$. Můžete použít počítač.
 ]
 
-#solution[]
+#solution[
+  #let newton-code = read("../code/newton.m")
+  Nejprve určíme první derivaci
+  $
+    f' vec(x, y) = mat(column-gap: #1em, 2 x - 2 cos(y^2 - 2 x), 2 y cos(y^2 - 2 x) -1)
+  $
+  a poté derivaci druhou
+  $
+    f'' vec(x, y) = mat(
+      column-gap: #1em,
+      2 - 4 sin(y^2 - 2 x), 4 y sin (y^2 - 2 x);
+      4 y sin(y^2 - 2 x), 2 cos(y^2 - 2 x) - 4 y^2 sin(y^2 - 2 x)
+    ).
+  $
+  Chceme tedy najít kořeny soustavy rovnic
+  $
+    2 x + 2 cos(y^2 - 2 x) & = 0, \
+     2 y cos(y^2 - 2 x) -1 & = 0.
+  $
+
+  Newtonovu metodu napíšeme v Octave/Matlab:
+
+  #raw(newton-code, lang: "matlab")
+  a můžeme ji zavolat s naší funkcí
+  ```matlab
+  function y = f(x)
+      y = [
+        2 * x(1) - 2 * cos(x(2)^2 - 2 * x(1)); ...
+        2 * x(2) * cos(x(2)^2 - 2 * x(1)) - 1
+      ];
+  end
+  ```
+  její derivací
+  ```matlab
+  function y = f_derivative(x)
+      y = [
+        2 - 4 * sin(x(2)^2 - 2 * x(1)), ...
+        4 * x(2) * sin(x(2)^2 - 2 * x(1)); ...
+        4 * x(2) * sin(x(2)^2 - 2 * x(1)), ...
+        2 * cos(x(2)^2 - 2 * x(1)) - 4 * x(2)^2 * sin(x(2)^2 - 2 * x(1))
+      ];
+  end
+  ```
+  pomocí #raw("newton(@f, @f_derivative, [1; 1], 0.1)", lang: "matlab"). Tím dostáváme výsledek `[0.6807; 0.7345]`.
+]
