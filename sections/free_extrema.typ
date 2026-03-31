@@ -98,7 +98,14 @@
   Najděte všechna řešení rovnice $sin(x) = 1/2 x$ (sinus je v radiánech) na kalkulačce s největší přesností, jakou dokážete.
 ]
 
-#solution[]
+#solution[
+  #let iterate-code = read("../code/iterate.m")
+  Nejprve rovnici upravíme na $x = 2 sin(x)$, můžeme tedy využít metodu prosté iterace, kterou napíšeme v Octave/Matlab pro zjednodušení práce:
+
+  #raw(iterate-code, lang: "matlab")
+  Následovně ji můžeme zavolat příkazem  #raw("iterate(@(x) 2 * sin(x), 1/2, 0.05)", lang: "matlab") a dostaneme výsledek `1.9127`.
+
+]
 
 #exercise[
   Najděte lokální extrém funkce $f vec(x, y) = x^2 − y + sin(y^2 − 2 x)$ čistou Newtonovou metodou. Počáteční odhad zvolte $vec(x_0, y_0) = vec(1, 1)$. Můžete použít počítač.
