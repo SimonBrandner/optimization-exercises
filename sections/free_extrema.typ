@@ -100,11 +100,10 @@
 
 #solution[
   #let iterate-code = read("../code/iterate.m")
-  Nejprve rovnici upravíme na $x = 2 sin(x)$, můžeme tedy využít metodu prosté iterace, kterou napíšeme v Octave/Matlab pro zjednodušení práce:
+  Jako první si můžeme povšimnout, že jedno řešení je zjevně $x = 0$. Dále můžeme upravit rovnici na $x = 2 sin(x)$, lze tedy využít metodu prosté iterace, kterou napíšeme v Octave/Matlab pro zjednodušení práce:
 
   #raw(iterate-code, lang: "matlab")
-  Následovně ji můžeme zavolat příkazem  #raw("iterate(@(x) 2 * sin(x), 1/2, 0.05)", lang: "matlab") a dostaneme výsledek `1.9127`.
-
+  Následovně ji můžeme zavolat příkazem #raw("iterate(@(x) 2 * sin(x), 1/2, 0.0001)", lang: "matlab") a dostaneme výsledek `1.8955`. Protože funkce $sin$ a $1/2 x$ jsou liché, musí existovat i řešení opačné k tomu námi nalezénumu.
 ]
 
 #exercise[
@@ -154,5 +153,5 @@
       ];
   end
   ```
-  pomocí #raw("newton(@f, @f_derivative, [1; 1], 0.1)", lang: "matlab"). Tím dostáváme výsledek `[0.6807; 0.7345]`.
+  pomocí #raw("newton(@f, @f_derivative, [1; 1], 0.0001)", lang: "matlab"). Tím dostáváme výsledek `[0.6807; 0.7345]`.
 ]
