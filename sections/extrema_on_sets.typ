@@ -63,7 +63,7 @@
             )
           }))
 
-          To lze ukázat i bez grafu, který můžeme vykreslit jen pro konkrétní $boup(a)$ nízké dimenze. Ukážeme, že funkce $boup(a)^T$ nabýva maxima $norm(boup(a))$ v bodě $boup(a)$.
+          To lze ukázat i bez grafu, který můžeme vykreslit jen pro konkrétní $boup(a)$ nízké dimenze. Ukážeme, že funkce $boup(a)^T$ nabýva maxima $norm(boup(a))$ v bodě $boup(a)/norm(boup(a))$.
 
           Nejprve ukážeme, že v libovolně malém okolí bodu $boup(v)$, který leží ve vnitřku množiny, existují body, ve kterých funkce $boup(a)^T$ nabýva menší i větší hodnoty než v bodě $boup(v)$. Pro libovolný bod $boup(v)$ takový, že $norm(boup(v)) < 1$ a pro libovolné $epsilon > 0$ takové, že $norm((1 + epsilon) boup(v)) < 1$, platí
           $
