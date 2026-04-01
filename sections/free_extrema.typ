@@ -223,5 +223,12 @@
       ];
   end
   ```
-  pomocí #raw("newton(@f, @f_derivative, [1; 1], 0.0001)", lang: "matlab"). Tím dostáváme výsledek `[0.6807; 0.7345]`.
+  pomocí #raw("newton(@f, @f_derivative, [1; 1], 0.0001)", lang: "matlab"). Tím dostáváme výsledek #raw("[0.6807; 0.7345]", lang: "matlab"). Příkazem #raw("f_derivative([0.6807; 0.7345])", lang: "matlab") dostáváme
+  ```matlab
+  [
+     4.9298,  -2.1519; ...
+    -2.1519,  2.9422
+  ]
+  ```
+  což jak vidíme, je positivně definitní matice, a v daném bodě je tady minimum.
 ]
