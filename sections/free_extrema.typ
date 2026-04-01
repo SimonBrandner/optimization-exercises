@@ -15,7 +15,7 @@
 #solution[
   #enum(
     [Hessova matice je indefinitní, v daném bodě bude tedy sedlo.],
-    [Hessova matice je positivně semidefinitní, v daném bodě bude tedy neostré minimum.],
+    [Hessova matice je positivně semidefinitní, v bodě tedy není maximum.],
     [Hessova matice je positivně definitní, v daném bodě bude tedy ostré minimum.],
   )
 ]
