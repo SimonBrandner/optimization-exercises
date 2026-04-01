@@ -15,7 +15,7 @@
 #solution[
   #enum(
     [Hessova matice je indefinitní, v daném bodě bude tedy sedlo.],
-    [Hessova matice je positivně semidefinitní, v bodě tedy není maximum.],
+    [Hessova matice je positivně semidefinitní, v bodě je tedy buď minimum nebo sedlový bod.],
     [Hessova matice je positivně definitní, v daném bodě bude tedy ostré minimum.],
   )
 ]
@@ -36,9 +36,13 @@
 #solution[
   #enum(
     enum.item(4)[
-      První derivace je
+      Nejprve určíme derivace. První derivace je
       $
-        f' vec(x, y) = mat(column-gap: #1em, 3 - 3 x^2 - 3 y^2, -6 x y).
+        f' vec(x, y) = mat(column-gap: #1em, 3 - 3 x^2 - 3 y^2, -6 x y)
+      $
+      a druhá derivace je
+      $
+        f'' vec(x, y) = mat(column-gap: #1em, -6x, -6 y; -6 y, - 6 x).
       $
 
       Musíme vyřešit soustavu $f' vec(x, y) = mat(0, 0)$. To jest
@@ -47,23 +51,89 @@
                    -6 x y & = 0.
       $
       Z druhé rovnice vidíme, že $x = 0$, nebo $y = 0$. Pokud $x = 0$, potom dostáme rovnice $3 - 3 y^2 = 0$, tedy $y^2 = 1$, resp. $y = plus.minus 1$. Je-li $y = 0$, pak dostáváme analogickou rovnici $3 - 3 x^2$, to jest $x^2 = 1$, resp. $x = plus.minus 1$. Stacionární body jsou tedy $vec(0, plus.minus 1)$ a $vec(plus.minus 1, 0)$.
+
+      Vyhodnocením $f''$ ve stacionárních bodech a určením definitnosti matic dostáváme následující tabulku.
+      #show math.equation.where(block: false): set text(
+        top-edge: "bounds",
+        bottom-edge: "bounds",
+      )
+      #align(center, table(
+        align: horizon + center,
+        inset: 5pt,
+        columns: 4,
+        [*Bod*], [*$f''$ v daném bodě*], [*Definitnost*], [*Klasifikace bodu*],
+
+        $ vec(0, 1) $,
+        $ mat(column-gap: #1em, 0, - 6; - 6, 0) $,
+        [indefinitní],
+        [sedlový bod],
+
+        $ vec(0, -1) $,
+        $ mat(column-gap: #1em, 0, 6; 6, 0) $,
+        [indefinitní],
+        [sedlový bod],
+
+        $ vec(1, 0) $,
+        $ mat(column-gap: #1em, - 6, 0; 0, - 6) $,
+        [negativně\ definitní],
+        [maximum],
+
+        $ vec(-1, 0) $,
+        $ mat(column-gap: #1em, 6, 0; 0, 6) $,
+        [positivně\ definitní],
+        [minimum],
+      ))
     ],
     [
-      První derivace je
+      Nejprve určíme první a druhou derivaci. První derivace je
       $
-        f' vec(x, y) = mat(column-gap: #1em, 6 y^2 - 6 x, 12 x y - 12 y^3).
+        f' vec(x, y) = mat(column-gap: #1em, 6 y^2 - 6 x^2, 12 x y - 12 y^3)
       $
+      a druhá derivace je
+      $
+        f'' vec(x, y) = mat(column-gap: #1em, -12 x, 12 y; 12 y, 12 x - 36 y^2).
+      $
+
       Musíme vyřešit soustavu $f' vec(x, y) = mat(0, 0)$. To jest
       $
-            6 y^2 - 6 x & = 0, \
+          6 y^2 - 6 x^2 & = 0, \
         12 x y - 12 y^3 & = 0,
       $
       úpravou dostáváme
       $
-        y^2 & = x, \
+        y^2 & = x^2, \
         x y & = y^3.
       $
-      Dosazením za $x$ z první rovnice vidíme, že druhá rovnost je splněna pro všechna $y in RR$. Stacionárními body tedy jsou $vec(t^2, t)$ pro všechna $t in RR$.
+      Z první rovnice vidíme, že musí platit $y = plus.minus x$. Také vidíme, že bod $vec(0, 0)$ triviálně#footnote[Resp. je to _trivoš_, jak by řekl doc. Werner.] splňuje obě podmínky. Neboť jsme situaci $y = 0$ vyšetřili, můžeme bezpečně vydělit druhou rovnici $y$, čímž dostaneme $x = y^2$. Z této podmínky dostáváme další dva body $vec(1, plus.minus 1)$.
+
+      Vyhodnocením $f''$ ve stacionárních bodech a určením definitnosti matic dostáváme následující tabulku.
+      #show math.equation.where(block: false): set text(
+        top-edge: "bounds",
+        bottom-edge: "bounds",
+      )
+
+      #block(breakable: false, align(center, table(
+        align: horizon + center,
+        inset: 5pt,
+        columns: 4,
+        [*Bod*], [*$f''$ v daném bodě*], [*Definitnost*], [*Klasifikace bodu*],
+
+        $ vec(0, 0) $,
+        $ mat(column-gap: #1em, 0, 0; 0, 0) $,
+        [positivně i negativně semidefinitní],
+        [nevíme nic],
+
+        $ vec(1, 1) $,
+        $ mat(column-gap: #1em, -12, 12; 12, -24) $,
+        [indefinitní],
+        [sedlový bod],
+
+        $ vec(1, -1) $,
+        $ mat(column-gap: #1em, -12, -12; -12, -24) $,
+        [indefinitní],
+        [sedlový bod],
+      )))
+      #v(16pt)
     ],
   )
 ]
@@ -126,7 +196,7 @@
   $
   Chceme tedy najít kořeny soustavy rovnic
   $
-    2 x + 2 cos(y^2 - 2 x) & = 0, \
+    2 x - 2 cos(y^2 - 2 x) & = 0, \
      2 y cos(y^2 - 2 x) -1 & = 0.
   $
 
