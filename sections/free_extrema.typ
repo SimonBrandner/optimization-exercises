@@ -103,7 +103,7 @@
   Jako první si můžeme povšimnout, že jedno řešení je zjevně $x = 0$. Dále můžeme upravit rovnici na $x = 2 sin(x)$, lze tedy využít metodu prosté iterace, kterou napíšeme v Octave/Matlab pro zjednodušení práce:
 
   #raw(iterate-code, lang: "matlab")
-  Následovně ji můžeme zavolat příkazem #raw("iterate(@(x) 2 * sin(x), 1/2, 0.0001)", lang: "matlab") a dostaneme výsledek `1.8955`. Protože funkce $sin$ a $1/2 x$ jsou liché, musí existovat i řešení opačné k tomu námi nalezénumu.
+  Následovně ji můžeme zavolat příkazem #raw("iterate(@(x) 2 * sin(x), 1/2, 0.0001)", lang: "matlab") a dostaneme výsledek `1.8955`. Protože funkce $sin(x)$ a $1/2 x$ jsou liché, musí existovat i řešení opačné: `-1.8955`.
 ]
 
 #exercise[
