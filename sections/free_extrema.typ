@@ -87,7 +87,7 @@
 
   Nyní vypočteme derivaci druhou:
   $
-    f''_(i j) vec(x_(i j)) = - delta_(i j)/x_(i j).
+    f''_(i j) (x_i) = - delta_(i j)/x_i.
   $
   Vidíme, že Hessova matice je diagonální, to, jestli je v bodě $boup(x)_0$ extrém (případně jaký) tedy závisí pouze na hodnotách
   $-1/(e^(a_i - 1))$
