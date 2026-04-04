@@ -1,5 +1,6 @@
 #import "@local/simplex-template:0.1.0": *
 #import "../utils.typ": *
+#import "@preview/cetz:0.4.2"
 
 = Lokální extrémy vázané rovnostmi
 
@@ -20,7 +21,150 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
 
 #solution[
   #enum(
-    enum.item(4)[],
+    enum.item(4)[
+      Úlohu nejprve vyřešníme pomocí parametrizace a poté pomocí Lagrangeových multiplikátorů.
+      #enum(
+        numbering: "(A)",
+        [
+          Extrémy vyšetříme pomocí parametrizace množiny, jedná se o kružnici, tudíž volíme parametrizaci
+          $
+            phi(t) = vec(cos(t), sin(t)), "kde" t in [0, 2 pi).
+          $
+
+          Určíme první derivaci funkce $f(phi(t))$,
+          $
+            (f(phi(t)))' &= f'(phi(t)) phi'(t) = \
+            &= mat(column-gap: #1em, 2 cos(t) sin(t), cos^2(t)) vec(-sin(t), cos(t)) = \
+            &= -2 sin^2(t) cos(t) + cos^3(t) = \
+            &= cos(t) (cos^2(t) - 2 sin^2(t)),
+          $
+          a její druhou derivaci
+          $
+            (f(phi(t)))'' & = -4 sin(t) cos^2(t) + 2 sin^3(t) - 3 cos^2(t) sin(t) = \
+                          & = 2 sin^3(t) - 7 sin(t) cos^2(t).
+          $
+
+          Řešíme tedy rovnici $cos(t) (cos^2(t) - 2 sin^2(t)) = 0$, ihned vidíme řešení $t = pi/2$ a $t = (3 pi)/2$, protože v těchto případech $cos(t) = 0$. Dále musíme vyřešit
+          $
+                cos^2(t) - 2 sin^2(t) & = 0 \
+            1 - sin^2(t) - 2 sin^2(t) & = 0 \
+                            sin^2 (t) & = 1/3. \
+          $
+          Z toho vidíme, že $sin(t) = plus.minus sqrt(1/3)$. Také můžeme upravit na
+          $
+            1 - cos^2(t) & = 1/3 \
+                cos^2(t) & = 2/3 \
+                  cos(t) & = plus.minus sqrt(2/3).
+          $
+
+          Z @circle-points[Obrázku] pak ihned vidíme, které body jsou maxima a minima.
+          #figure(
+            caption: [Extrémy na kružnici],
+            cetz.canvas(length: 2cm, {
+              import cetz.draw: *
+
+              set-style(
+                mark: (fill: black, scale: 2),
+                content: (padding: 1pt),
+              )
+
+              line((-2.5, 0), (2.5, 0), stroke: 1pt + gray, mark: (
+                end: "stealth",
+                fill: gray,
+              ))
+              content((), $ #h(10pt)x $, anchor: "east")
+              line((0, -2.5), (0, 2.5), stroke: 1pt + gray, mark: (
+                end: "stealth",
+                fill: gray,
+              ))
+              content((), $ y $, anchor: "south")
+
+              circle((0, 0), radius: 2)
+              let points = (
+                (
+                  "south-west",
+                  $sqrt(1/3)$,
+                  $sqrt(2/3)$,
+                  $1/3 sqrt(2/3)$,
+                  calc.sqrt(1 / 3),
+                  calc.sqrt(2 / 3),
+                ),
+                (
+                  "north-west",
+                  $sqrt(1/3)$,
+                  $-sqrt(2/3)$,
+                  $- 1/3 sqrt(2/3)$,
+                  +calc.sqrt(1 / 3),
+                  -calc.sqrt(2 / 3),
+                ),
+                (
+                  "south-east",
+                  $-sqrt(1/3)$,
+                  $sqrt(2/3)$,
+                  $1/3 sqrt(2/3)$,
+                  -calc.sqrt(1 / 3),
+                  +calc.sqrt(2 / 3),
+                ),
+                (
+                  "north-east",
+                  $-sqrt(1/3)$,
+                  $-sqrt(2/3)$,
+                  $- 1/3 sqrt(2/3)$,
+                  -calc.sqrt(1 / 3),
+                  -calc.sqrt(2 / 3),
+                ),
+                ("south-west", $0$, $1$, $0$, 0, 1),
+                ("north-west", $0$, $-1$, $0$, 0, -1),
+              )
+              let scale = 2
+
+              for (point-anchor, x, y, v, x-pos, y-pos) in points {
+                let point-name = (
+                  "circle-"
+                    + str(x-pos).replace(".", ":")
+                    + str(y-pos).replace(".", ":")
+                )
+                circle(
+                  (2 * x-pos, 2 * y-pos),
+                  name: point-name,
+                  radius: 3pt,
+                  stroke: none,
+                  fill: blue,
+                )
+                content(
+                  (point-name),
+                  padding: 7pt,
+                  anchor: point-anchor,
+                  $f vec(#x, #y) = #v$,
+                )
+              }
+            }),
+          ) <circle-points>
+        ],
+        [
+          Nyní úlohu vyřešíme pomocí Lagrangeových multiplikátorů. Zkonstruujeme Lagrangeovu funkci:
+          $
+            L vec(x, y, lambda) = x^2 y + lambda (x^2 + y^2 - 1).
+          $
+          Její derivace je
+          $
+            L' vec(x, y, lambda) = mat(column-gap: #1em, 2 x y + 2 x lambda, x^2 + 2 y lambda, x^2 + y^2 - 1).
+          $
+          Nyní řešíme soustavu $L' vec(x, y, lambda) = 0$:
+          $
+            2 x y + 2 x lambda & = 0 \
+              x^2 + 2 y lambda & = 0 \
+                 x^2 + y^2 - 1 & = 0
+          $
+          Nejprve se zaměříme na případ $x = 0$, kde z třetí rovnice ihned dostáváme $y = plus.minus 1$. Dále můžeme řešit soustavu s předpokladem $x != 0$, vyjádříme z první rovnice $y$ a dostáváme $y = - lambda$; to dosadíme do dalších dvou rovnic:
+          $
+              x^2 - 2 lambda^2 & = 0 \
+            x^2 + lambda^2 - 1 & = 0.
+          $
+          Nyní lze od první rovnice odečíst tu druhou a dostaneme $-3 lambda^2 + 1 = 0$, resp. $lambda = plus.minus sqrt(1/3)$. Z toho už vidíme, že $y = plus.minus sqrt(1/3)$ a $x = plus.minus sqrt(2/3)$. Dále můžeme postupovat analogicky k předchozímu bodu pomocí @circle-points[Obrázku].
+        ],
+      )
+    ],
   )
 ]
 
