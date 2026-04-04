@@ -325,4 +325,59 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
   Minimalizujte $boup(x)^T boup(x)$ za podmínky, že $boup(a)^T boup(x)$ = 1. Jaký je geometrický význam úlohy?
 ]
 
-#solution[]
+#solution[
+  Úlohu lze geometricky snadno chápat. Řešení soustavy $boup(a)^T boup(x)$ je nějaký afinní podprostor a my hledáme jeho bod, který je nejblíže počátku (minimalizujeme kvadrát $norm(boup(x))$). Je tedy zjevné, že úloha bude mít pouze jeden stacionární bod, který bude řešením, až na případ $boup(a) = 0$, kterým se zaobírat nebude.
+  #enum(
+    numbering: "(A)",
+    [
+      Velmi snadno úlohu vyřešíme tak, že vypočítáme
+      $
+        norm("proj"_((ker(boup(a)^T))^bot) (boup(p)))^2 = norm("proj"_im(boup(a)) (boup(p)))^2 = norm("proj"_boup(a) (boup(p)))^2,
+      $
+      kde $boup(p)$ je partikulární řešení soustavy $boup(a)^T boup(x) = 1$. Platí ale
+      $
+        norm("proj"_boup(a) boup(p))^2 =
+        norm(innerproduct(boup(a), boup(p))/innerproduct(boup(a), boup(a)) boup(a))^2 =
+        norm((boup(a)^T boup(p))/norm(boup(a))^2 boup(a))^2 =
+        norm(1/norm(boup(a))^2 boup(a))^2 =
+        norm(boup(a))^2/norm(boup(a))^4 =
+        1/norm(boup(a))^2.
+      $
+    ],
+    [
+      Alternativou je využít Lagrangeových multiplikátorů. Zkonstruujeme Lagrangeovu funkci,
+      $
+        L mat(augment: #(hline: 1), boup(x); lambda) = boup(x)^T boup(x) + lambda (boup(a)^T boup(x) - 1),
+      $
+      a určíme první derivaci:
+      $
+        L' mat(augment: #(hline: 1), boup(x); lambda) = mat(augment: #(vline: 1), 2 boup(x)^T + lambda boup(a)^T, boup(a)^T boup(x) - 1).
+      $
+
+      Nyní musíme vyřešit soustavu
+      $
+        2 boup(x)^T + lambda boup(a)^T & = 0 \
+                 boup(a)^T boup(x) - 1 & = 0.
+      $
+      Z první rovnice vidíme, že $boup(x)^T = -1/2 lambda boup(a)^T$, a tedy $boup(x) = -1/2 lambda boup(a)$. Za $boup(x)$ tedy můžeme dosadit do druhé rovnice a upravovat:
+      $
+        boup(a)^T (-1/2 lambda boup(a)) - 1 & = 0 \
+          -1/2 lambda boup(a)^T boup(a) - 1 & = 0 \
+                   lambda boup(a)^T boup(a) & = -2 \
+                     lambda norm(boup(a))^2 & = -2 \
+                                     lambda & = -2/norm(boup(a))^2. \
+      $
+      Dosazením $lambda$ do zpátky do první rovnice dostáváme:
+      $
+        2 boup(x)^T -2/norm(boup(a))^2 boup(a)^T & = 0 \
+                                       boup(x)^T & = 1/norm(boup(a))^2 boup(a)^T \
+                                         boup(x) & = 1/norm(boup(a))^2 boup(a).
+      $
+
+      Nyní už stačí vypočítat hodnotu funkce v nalezeném $boup(x)$:
+      $
+        boup(x)^T boup(x) = (1/norm(boup(a))^2 boup(a)^T) 1/norm(boup(a))^2 boup(a) = 1/norm(boup(a))^4 boup(a)^T boup(a) = norm(boup(a))^2/norm(boup(a))^4 = 1/norm(boup(a))^2.
+      $
+    ],
+  )
+]
