@@ -310,7 +310,7 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
     ],
   )
 
-  Nápověda: Uvažujte zrcadlo/rozhraní jako křivý povrch $X = {boup(x) in RR^n | g(boup(x)) = 0}$, kde funkce $g : RR^n -> R$ má v každém bodě nenulový gradient. Uvažujte (libovolné) dva body $boup(a), boup(b) in RR^n$ (v případě lomu každý na jiné straně rozhraní) a napište podmínku na bod $boup(x) in X$ tak, aby čas letu světla po dráze $boup(a)-boup(x)-boup(b)$ byl lokálně extrémní.
+  Nápověda: Uvažujte zrcadlo/rozhraní jako křivý povrch $X = {boup(x) in RR^n | g(boup(x)) = 0}$, kde funkce $g : RR^n -> RR$ má v každém bodě nenulový gradient. Uvažujte (libovolné) dva body $boup(a), boup(b) in RR^n$ (v případě lomu každý na jiné straně rozhraní) a napište podmínku na bod $boup(x) in X$ tak, aby čas letu světla po dráze $boup(a)-boup(x)-boup(b)$ byl lokálně extrémní.
 
   Později se zjistilo, že správným kritériem není nejkratší ale extrémní čas, tedy skutečná dráha paprsku má čas větší nebo menší než jí blízké dráhy. Dokážete najít situaci, kdy skutečná dráha paprsku má čas větší než jí blízké dráhy?
 ]
