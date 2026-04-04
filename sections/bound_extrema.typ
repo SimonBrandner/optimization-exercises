@@ -251,7 +251,7 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
                                  x^6 & = 2 \
                                    x & = plus.minus root(6, 2) \
           $
-          Z toho vidíme, že $y = 1/root(3, 2)$ a $lambda = -2/root(3, 4)$. Ze znaménka Hessiínu v daných bodech vidíme, že oba body minima.
+          Z toho vidíme, že $y = 1/root(3, 2)$ a $lambda = -2/root(3, 4)$. Ze znaménka Hessiánu v daných bodech vidíme, že oba body minima.
           #show math.equation.where(block: false): set text(
             top-edge: "bounds",
             bottom-edge: "bounds",
