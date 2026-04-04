@@ -30,3 +30,9 @@
 #include "sections/extrema_on_sets.typ"
 #include "sections/free_extrema.typ"
 #include "sections/bound_extrema.typ"
+#include "sections/linear_programming.typ"
+#include "sections/convex_sets.typ"
+#counter(heading).update(i => i + 1)
+#include "sections/lp_duality.typ"
+#include "sections/convex_functions.typ"
+#include "sections/convex_optimization.typ"
