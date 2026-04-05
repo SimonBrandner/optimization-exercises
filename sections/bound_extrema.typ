@@ -260,7 +260,7 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
             columns: 4,
             align: center + horizon,
             [*Bod*],
-            [*$f''$ v bodě*],
+            [*$L''$ v bodě*],
             [*Znaménko\ determinantu*],
             [*Klasifikace\ extrému*],
 
