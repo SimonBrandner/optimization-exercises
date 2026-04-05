@@ -317,7 +317,118 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
 
 #solution[
   #enum(
-    enum.item(1)[],
+    enum.item(1)[
+      Úlohu vyřešíme pomocí Lagrangeových multiplikátorů, Zkonstruujeme Lagrangeovu funkci,
+      $
+        L mat(augment: #(hline: 1), boup(x); lambda) = norm(boup(a) - boup(x))/c + norm(boup(b) - boup(x))/c + lambda g(boup(x)),
+      $
+      a určíme její první derivaci,
+      $
+        L' mat(augment: #(hline: 1), boup(x); lambda) = mat(augment: #(vline: 1), -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) + lambda g'(boup(x)), g(boup(x))).
+      $
+      Nyní musíme vyřešit soustavu
+      $
+        -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) + lambda g'(boup(x)) &= 0 \
+        g(boup(x)) &= 0.
+      $
+      Úpravami první rovnice,
+      $
+        -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) &= - lambda g'(boup(x)) \
+        -(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))) &= - lambda ( g'(boup(x)))^T, \
+      $
+      získáváme výraz, který můžeme skalárně vynásobit normovaným vektorem $boup(t) = times((g'(boup(x)))^T)$, čímž po dalších úpravách,
+      $
+        innerproduct(-(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))), boup(t)/norm(boup(t)))
+        &= innerproduct(lambda (g'(boup(x)))^T, boup(t)/norm(boup(t))) \
+        innerproduct(-(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))), boup(t)/norm(boup(t)))
+        &= 0 \
+        1/c (- innerproduct(
+            (boup(x) - boup(a))/norm(boup(x) - boup(a)), boup(t)/norm(boup(t))
+          ) - innerproduct(
+            (boup(x) - boup(b))/norm(boup(x) - boup(b)),
+            boup(t)/norm(boup(t))
+          )
+        )
+        &= 0 \
+        - innerproduct((boup(x) - boup(a))/norm(boup(x) - boup(a)), boup(t)/norm(boup(t)))
+        &= innerproduct((boup(x) - boup(b))/norm(boup(x) - boup(b)), boup(t)/norm(boup(t))) \
+        - innerproduct((boup(x) - boup(a)), boup(t))/(norm(boup(x) - boup(a)) norm(boup(t)))
+        &= innerproduct((boup(x) - boup(b)), boup(t))/(norm(boup(x) - boup(b)) norm(boup(t))) \
+        - cos(phi) &= cos(psi),
+      $
+      dostaneme rovnost $-cos(phi) = cos(psi)$, tu můžeme interpretovat geometricky, viz @fermat níže, že jsme skutečně ukázali, že úhel dopadu se rovná úhlu odrazu.
+      #context [
+        #figure(
+          caption: [Úhel dopadu a úhel odrazu],
+          cetz.canvas(length: 2cm, {
+            import cetz.draw: *
+
+            set-style(
+              mark: (fill: black, scale: 2),
+              content: (padding: 1pt),
+            )
+
+            circle((-2, 2), radius: 2pt, stroke: none, fill: black)
+            content((), padding: 5pt, anchor: "east", $boup(b)$)
+            circle((2, 2), radius: 2pt, stroke: none, fill: black)
+            content((), padding: 5pt, anchor: "west", $boup(a)$)
+
+
+            let x-pos = calc.cos(45deg) * 1.5
+            let y-pos = calc.sin(45deg) * 1.5
+            line((-2, 2), (0, 0))
+            arc((), anchor: "origin", start: 0deg, stop: 180deg, radius: 1.5)
+            content((1.5, .75), $phi$)
+            line((x-pos, 0), (x-pos, y-pos))
+            circle(
+              (x-pos, 0),
+              radius: 2pt,
+              fill: black,
+              stroke: none,
+            )
+            content((), anchor: "south-east", $cos(phi)$, padding: 4pt)
+
+            line((2, 2), (0, 0))
+            content((0, 1.75), $psi$)
+            content((-1.85, .75), $phi = pi - psi$)
+            line((-x-pos, 0), (-x-pos, y-pos))
+            circle(
+              (-x-pos, 0),
+              radius: 2pt,
+              fill: black,
+              stroke: none,
+            )
+            content((), anchor: "south-west", $cos(psi)$, padding: 4pt)
+            arc-through((-2, -0.3), (0, 0), (2, -0.3))
+            let x-set-content = $X = { boup(x) | g(boup(x)) = 0 }$
+            content(
+              (),
+              anchor: "north",
+              x-set-content,
+              padding: 5pt,
+            )
+            content(
+              (-2, 0),
+              anchor: "north",
+              h(measure(x-set-content).width),
+              padding: 5pt,
+            )
+
+            line((-2, 0), (2, 0))
+            content((), anchor: "west", $"span"(boup(t))$, padding: 5pt)
+
+            circle((0, 0), radius: 2pt, stroke: none, fill: black)
+            content((0.1, -0.1), $boup(x)$)
+
+            line((0, 0), (0, -0.5), mark: (
+              scale: 0.5,
+              end: "stealth",
+            ))
+            content((), anchor: "west", $gradient g(boup(x))$, padding: 5pt)
+          }),
+        ) <fermat>
+      ]
+    ],
   )
 ]
 
