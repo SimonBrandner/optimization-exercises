@@ -318,45 +318,12 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
 #solution[
   #enum(
     enum.item(1)[
-      Úlohu vyřešíme pomocí Lagrangeových multiplikátorů, Zkonstruujeme Lagrangeovu funkci,
+      Mějme dva body $boup(a), boup(b) in RR^2$ a zrcadlo $X = {boup(x) in RR^2 | g(boup(x)) = 0}$. Hledáme na zrcadle bod $boup(x)$, ve kterém se paprsek z bodu $boup(a)$ odrazí do bodu $boup(b)$ tak, že čas
       $
-        L mat(augment: #(hline: 1), boup(x); lambda) = norm(boup(a) - boup(x))/c + norm(boup(b) - boup(x))/c + lambda g(boup(x)),
+        t= s_1/c + s_2/c,
       $
-      a určíme její první derivaci,
-      $
-        L' mat(augment: #(hline: 1), boup(x); lambda) = mat(augment: #(vline: 1), -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) + lambda g'(boup(x)), g(boup(x))).
-      $
-      Nyní musíme vyřešit soustavu
-      $
-        -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) + lambda g'(boup(x)) &= 0 \
-        g(boup(x)) &= 0.
-      $
-      Úpravami první rovnice,
-      $
-        -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) &= - lambda g'(boup(x)) \
-        -(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))) &= - lambda ( g'(boup(x)))^T, \
-      $
-      získáváme výraz, který můžeme skalárně vynásobit normovaným vektorem $boup(t) = times((g'(boup(x)))^T)$, čímž po dalších úpravách,
-      $
-        innerproduct(-(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))), boup(t)/norm(boup(t)))
-        &= innerproduct(lambda (g'(boup(x)))^T, boup(t)/norm(boup(t))) \
-        innerproduct(-(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))), boup(t)/norm(boup(t)))
-        &= 0 \
-        1/c (- innerproduct(
-            (boup(x) - boup(a))/norm(boup(x) - boup(a)), boup(t)/norm(boup(t))
-          ) - innerproduct(
-            (boup(x) - boup(b))/norm(boup(x) - boup(b)),
-            boup(t)/norm(boup(t))
-          )
-        )
-        &= 0 \
-        - innerproduct((boup(x) - boup(a))/norm(boup(x) - boup(a)), boup(t)/norm(boup(t)))
-        &= innerproduct((boup(x) - boup(b))/norm(boup(x) - boup(b)), boup(t)/norm(boup(t))) \
-        - innerproduct((boup(x) - boup(a)), boup(t))/(norm(boup(x) - boup(a)) norm(boup(t)))
-        &= innerproduct((boup(x) - boup(b)), boup(t))/(norm(boup(x) - boup(b)) norm(boup(t))) \
-        - cos(phi) &= cos(psi),
-      $
-      dostaneme rovnost $-cos(phi) = cos(psi)$, tu můžeme interpretovat geometricky, viz @fermat níže, že jsme skutečně ukázali, že úhel dopadu se rovná úhlu odrazu.
+      kde $c$ je rychlost světla, $s_1 = norm(boup(a) - boup(x))$ je délka dráhy paprsku mezi body $boup(a)$ a $boup(x)$ a $s_2 = norm(boup(b) - boup(x))$ je délka dráhy světla mezi body $boup(b)$ a $boup(x)$, je minimální. Situace je znázorněna na @fermat[Obrázku].
+
       #context [
         #figure(
           caption: [Úhel dopadu a úhel odrazu],
@@ -428,6 +395,50 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
           }),
         ) <fermat>
       ]
+
+      Úlohu vyřešíme pomocí Lagrangeových multiplikátorů. Zkonstruujeme Lagrangeovu funkci,
+      $
+        L mat(augment: #(hline: 1), boup(x); lambda) = norm(boup(a) - boup(x))/c + norm(boup(b) - boup(x))/c + lambda g(boup(x)),
+      $
+      a určíme její první derivaci,
+      $
+        L' mat(augment: #(hline: 1), boup(x); lambda) = mat(augment: #(vline: 1), -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) + lambda g'(boup(x)), g(boup(x))).
+      $
+      Nyní musíme vyřešit soustavu
+      $
+        -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) + lambda g'(boup(x)) &= 0 \
+        g(boup(x)) &= 0.
+      $
+      Úpravami první rovnice,
+      $
+        -(boup(x) - boup(a))^T/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))^T/(c norm(boup(x) - boup(b))) &= - lambda g'(boup(x)) \
+        -(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))) &= - lambda ( g'(boup(x)))^T, \
+      $
+      získáváme výraz, který můžeme skalárně vynásobit normovaným tečným vektorem
+      $
+        boup(t) = times((g'(boup(x)))^T)
+      $
+      k $X$. Tím popo dalších úpravách,
+      $
+        innerproduct(-(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))), boup(t)/norm(boup(t)))
+        &= innerproduct(lambda (g'(boup(x)))^T, boup(t)/norm(boup(t))) \
+        innerproduct(-(boup(x) - boup(a))/(c norm(boup(x) - boup(a))) - (boup(x) - boup(b))/(c norm(boup(x) - boup(b))), boup(t)/norm(boup(t)))
+        &= 0 \
+        1/c (- innerproduct(
+            (boup(x) - boup(a))/norm(boup(x) - boup(a)), boup(t)/norm(boup(t))
+          ) - innerproduct(
+            (boup(x) - boup(b))/norm(boup(x) - boup(b)),
+            boup(t)/norm(boup(t))
+          )
+        )
+        &= 0 \
+        - innerproduct((boup(x) - boup(a))/norm(boup(x) - boup(a)), boup(t)/norm(boup(t)))
+        &= innerproduct((boup(x) - boup(b))/norm(boup(x) - boup(b)), boup(t)/norm(boup(t))) \
+        - innerproduct((boup(x) - boup(a)), boup(t))/(norm(boup(x) - boup(a)) norm(boup(t)))
+        &= innerproduct((boup(x) - boup(b)), boup(t))/(norm(boup(x) - boup(b)) norm(boup(t))) \
+        - cos(phi) &= cos(psi),
+      $
+      dostaneme rovnost $-cos(phi) = cos(psi)$. Tuto rovnost můžeme interpretovat geometricky, viz @fermat. Vidíme tedy, že jsme skutečně ukázali, že úhel dopadu se rovná úhlu odrazu.
     ],
   )
 ]
