@@ -88,7 +88,7 @@
       za podmínek
       $
         &&   x_1 & - &   x_2 & -   &    x_3 &&          & >= 0, \
-        &&  -x_1 & + & 2 x_2 & -   &        &&    3 x_3 & <= 5, \
+        &&  -x_1 & + & 2 x_2 & -   &  3 x_3 &&          & <= 5, \
         && 2 x_1 & - &   x_2 & -   &    x_3 &&  + 2 x_4 & = 6, \
         &&       &   &       & x_1 & , x_2, && x_3, x_4 & >= 0,
       $
@@ -100,10 +100,56 @@
       $
       za podmínek
       $
-        sum_(i=1)^n x_(i j) & =  & a_i & ,#h(10pt) && i = 1, dots, m, \
+        sum_(j=1)^n x_(i j) & =  & a_i & ,#h(10pt) && i = 1, dots, m, \
         sum_(i=1)^m x_(i j) & =  & b_j & ,#h(10pt) && j = 1, dots, n, \
                     x_(i j) & >= &   0 & ,#h(10pt) && i = 1, dots, m, j = 1, dots, n.
       $
+    ],
+  )
+]
+
+#solution[
+  #enum(
+    [
+      Úlohu nejprve převedeme na rovnicový tvar,
+      $
+        &&   x_1 & - &   x_2 & - &   x_3 &&           &&     - y_1 &          &  = 0, \
+        &&  -x_1 & + & 2 x_2 & - & 3 x_3 &&           &&           & + y_2    &  = 5, \
+        && 2 x_1 & - &   x_2 & - &   x_3 &&   + 2 x_4 &&           &          &  = 6, \
+        &&       &   &       &   &       && x_1, x_2, && x_3, x_4, & y_1, y_2 & >= 0,
+      $
+      a poté ji zapíšeme pomocí matic,
+      $
+        boup(r) = vec(2, 0, -3, 1, 0, 0),
+        boup(u) = vec(x_1, x_2, x_3, x_4, y_1, y_2),
+        boup(P) = mat(1, -1, -1, 0, -1, 0; -1, 2, -3, 0, 0, 1; 2, -1, -1, 2, 0, 0)
+        "a" boup(q) = vec(0, 5, 6).
+      $
+    ],
+    [
+      Úloha již je v rovnicovém tvaru, stačí ji tedy zapsat maticově. Zadefinujme
+      $
+        boup(a) = mat(a_1; dots.v; a_m),
+        boup(b) = mat(b_1; dots.v; b_n),
+        boup(x)_j = vec(x_(1 j), dots.v, x_(m j)) "a"
+        boup(c)_j = vec(c_(1 j), dots.v, c_(m j)) "pro" j = 1, dots, n,
+      $
+      poté můžeme zadefinovat požadované vektory a matice,
+      $
+        boup(r) = mat(augment: #(hline: (1, 2)), boup(c)_1; dots.v; boup(c)_n),
+        boup(u) = mat(augment: #(hline: (1, 2)), boup(x)_1; dots.v; boup(x)_n),
+        boup(P) = mat(
+          augment: #(hline: (1, 2, 3, 4, 5), vline: (1, 2, 3, 4)),
+          boup(I), boup(I), dots.c, boup(I), boup(I);
+          boup(1)^T, boup(0)^T, dots.c, boup(0)^T, boup(0)^T;
+          boup(0)^T, boup(1)^T, dots.c, boup(0)^T, boup(0)^T;
+          dots.v, dots.v, dots.down, dots.v, dots.v;
+          boup(0)^T, boup(0)^T, dots.c, boup(1)^T, boup(0)^T;
+          boup(0)^T, boup(0)^T, dots.c, boup(0)^T, boup(1)^T;
+        ) "a"
+        boup(q) = mat(augment: #(hline: 1), boup(a); boup(b)),
+      $
+      kde $boup(I) in RR^(m times m)$ a $boup(0), boup(1) in RR^m$.
     ],
   )
 ]
