@@ -1,3 +1,5 @@
+#import "@preview/cetz-plot:0.1.3": plot
+#import "@preview/cetz:0.4.2"
 #import "@local/simplex-template:0.1.0": *
 #import "../utils.typ": *
 
@@ -19,6 +21,60 @@
   + $boup(c) = vec(-1, 0, 1)$,
   + $boup(c) = vec(0, 1, 0)$,
   + $boup(c) = vec(0, 0, -1)$.
+]
+
+#solution[
+  Protože omezení (až na omezení na nezápornost) se týkají jen proměnných $x_1$ a $x_2$, graficky znázorníme právě tyto omezení.
+  #figure(
+    align(center, cetz.canvas({
+      import cetz.draw: *
+
+      plot.plot(
+        name: "plot",
+        axis-style: "school-book",
+        size: (8, 8),
+        x-label: $x_1$,
+        y-label: $x_2$,
+        x-tick-step: 1,
+        y-tick-step: 1,
+        y-min: -1,
+        y-max: 11,
+        {
+          let domain = (-1, 11)
+
+          plot.add(x => 1 - x, domain: domain)
+          plot.add(x => (1 - x) / 2, domain: domain)
+          plot.add(x => 10 - x, domain: domain)
+          plot.add-anchor("a", (1, 0))
+          plot.add-anchor("b", (10, 0))
+          plot.add-anchor("c", (0, 10))
+          plot.add-anchor("d", (0, 1))
+        },
+      )
+      merge-path(fill: gray, {
+        line("plot.a", "plot.b")
+        line("plot.b", "plot.c")
+        line("plot.c", "plot.d")
+        line("plot.d", "plot.a")
+      })
+    })),
+    caption: "Grafické znázornění omezeních",
+  ) <lin-prg-easy>
+
+  #enum(
+    [
+      Chceme minimalizovat $-x_1 + x_3$. Pro $x_3$ máme jediné omezení $x_3 >= 0$, tudíž zvolíme $x_3 = 0$. Poté chceme minimalizovat $-x_1$, tedy maximalizovat $x_1$. Z @lin-prg-easy[Obrázku] pak vidíme, že minima dosáhneme v bodě $boup(x) = vec(10, 0, 0)$.
+    ],
+    [
+      Chceme minimalizovat $x_2$. Ihned vidíme, že $x_3$ lze volit libovolně. Zároveň z obrázku vidíme, že množina řešeních bude
+      $
+        {vec(x_1, x_2, x_3) mid(|) x_1 in [1, 10], x_2 = 0, x_3 >= 0}.
+      $
+    ],
+    [
+      Z předchozích bodů vidíme, že omezení na proměnné $x_1$ a $x_2$ jsou splnitelná. V této podúloze máma minimalizovat $-x_3$ s jedinou podmínkou na $x_3$, která je,že $x_3 >= 0$. Hodnota $x_3$ tedy není shora omezená, tedy Hodnota $-x_3$ není zdola omezená. Úloha tedy nemá optimum.
+    ],
+  )
 ]
 
 #exercise[
