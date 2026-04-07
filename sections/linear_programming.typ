@@ -78,7 +78,7 @@
 ]
 
 #exercise[
-  Následující úlohy nejprve převeďte na rovnicový tvar (tj. tvar s nezápornými proměnnými a omezeními typu lineární rovnice). Potom je převeďte do maticové formy $min{boup(r)^T boup(u) | boup(P) boup(u) = boup(q), boup(u) >= 0}$ (výsledkem tedy budou $boup(u), boup(P), boup(q), boup(r)$).
+  Následující úlohy nejprve převeďte na rovnicový tvar (tj. tvar s nezápornými proměnnými a omezeními typu lineární rovnice). Potom je převeďte do maticové formy $min{boup(r)^T boup(u) | boup(P) boup(u) = boup(q), boup(u) >= boup(0)}$ (výsledkem tedy budou $boup(u), boup(P), boup(q), boup(r)$).
   #enum(
     [
       Minimum z
