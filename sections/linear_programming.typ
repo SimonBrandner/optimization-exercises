@@ -166,6 +166,22 @@
   + $min{abs(x_1) + abs(x_2) | x_1, x_2 in RR, 2 x_1 - x_2 >= 1, -x_1 + 2 x_2 >= 1}$,
 ]
 
+#solution[
+  Převedeme na úlohu minimalizace
+  $
+    y_1 + y_2
+  $
+  za podmínek
+  $
+    &   & 2 x_1 & - &   x_2 &   &     &   &    >= 1, \
+    & - &   x_1 & + & 2 x_2 &   &     &   &    >= 1, \
+    &   &   x_1 &   &       & - & y_1 &   &    <= 0, \
+    & - &   x_1 &   &       & - & y_1 &   &    <= 0, \
+    &   &       &   &   x_2 &   &     & - & y_2<= 0, \
+    &   &       & - &   x_2 &   &     & - & y_2<= 0. \
+  $
+]
+
 #exercise(number: 9)[
   Firma na výrobu kánoí má 120 zaměstnanců, z nichž každý pracuje maximálně 30 hodin týdně. Polovina zaměstnanců pracuje v truhlářské dílně, 20 zaměstnanců pracuje v dílně na zpracování plastů a zbytek v kompletační dílně. Firma vyrábí dva typy kánoí: standardní kánoe s čistým ziskem 7 EUR za kus a luxusní kánoe s čistým ziskem 10 EUR za kus. Na výrobu jedné standardní kánoe je třeba 4.5 hodiny práce v truhlářské dílně a dvě hodiny v každé ze zbylých dvou dílen. Jedna luxusní kánoe vyžaduje 5 hodin práce v truhlárně, hodinu v dílně na plasty a 4 hodiny kompletace. Průzkum trhu odhalil, že ne méně jež 1/3 a ne více než 2/3 vyrobených kánoí by měly být luxusní. Kolik kterých kánoí má firma týdně vyrobit, aby byl její čistý zisk maximální? Formalizujte jako optimalizační úlohu. Tuto úlohu už ale neřešte.
 ]
