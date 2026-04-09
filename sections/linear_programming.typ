@@ -161,6 +161,43 @@
   + $max{boup(c)^T boup(x) | boup(x) in RR^n, boup(x) >= boup(0), boup(1)^T boup(x) = 1}$,
 ]
 
+#solution[
+  #enum(
+    [
+      Zvolíme
+      $
+        x_i = cases(
+          1 & "pokud" c_i > 0\,,
+          v & "pokud" c_i = 0\,,
+          0 & "pokud" c_i < 0\,,
+        ) #h(20pt) "kde" v in [0, 1].
+      $
+      Chceme totiž maximalizovat $sum_(i=1)^n c_i x_i$, na což stačí maximalizovat jednotlivé sčítance. Chceme-li maximalizovat $c_i x_i$, naše volba $x_i$ se nutně bude odvíjet od hodnoty $c_i$ -- bude-li kladné, volíme $x_i$ maximální možné, bude-li $c_i$ záporné, volíme $x_i$ minimální možné, bude-li nulová, volíme cokoliv z intervalu $[0, 1]$, neboť to hodnotu sumy neovlivní.
+    ],
+    [
+      Zvolíme
+      $
+        x_i = cases(
+          1 & "pokud" c_i > 0\,,
+          v & "pokud" c_i = 0\,,
+          -1 & "pokud" c_i < 0\,,
+        ) #h(20pt) "kde" v in [-1, 1].
+      $
+      Naše úvaha je analogická k minulému bodu.
+    ],
+    [
+      Pojmenujme množinu $M = "argmax"_(i in {1, dots, n}) { c_i }$ a $m = {1, dots, n} - M$, poté zvolíme
+      $
+        x_i = cases(
+          v_i & "pokud" i in M\,,
+          0 & "pokud" i in m\,
+        ) #h(20pt) "kde" v_i >= 0 "a" sum_(i in M) v_i = 1.
+      $
+      Úlohu lze totiž chápat jako maximalizaci váženého průměru hodnot $x_i$ s váhami $c_i$. Abychom tuto hodnotu maximalizovali, u indexů, které nejsou argumentem maxima, volímu $0$ a jinde maximální hodnotu tak, aby součet vah dal $1$.
+    ],
+  )
+]
+
 #exercise[
   Pokuste se úlohy transformovat na LP. Pokud to nedokážete, vysvětlete proč.
   + $min{abs(x_1) + abs(x_2) | x_1, x_2 in RR, 2 x_1 - x_2 >= 1, -x_1 + 2 x_2 >= 1}$,
