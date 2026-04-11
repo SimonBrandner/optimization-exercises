@@ -24,7 +24,7 @@
 ]
 
 #solution[
-  Protože omezení (až na omezení na nezápornost) se týkají jen proměnných $x_1$ a $x_2$, graficky znázorníme právě tyto omezení.
+  Protože omezení (až na omezení na nezápornost) se týkají jen proměnných $x_1$ a $x_2$, graficky znázorníme právě tato omezení.
   #figure(
     align(center, cetz.canvas({
       import cetz.draw: *
@@ -72,7 +72,7 @@
       $
     ],
     [
-      Z předchozích bodů vidíme, že omezení na proměnné $x_1$ a $x_2$ jsou splnitelná. V této podúloze máma minimalizovat $-x_3$ s jedinou podmínkou na $x_3$, která je,že $x_3 >= 0$. Hodnota $x_3$ tedy není shora omezená, tedy Hodnota $-x_3$ není zdola omezená. Úloha tedy nemá optimum.
+      Z předchozích bodů vidíme, že omezení na proměnné $x_1$ a $x_2$ jsou splnitelná. V této podúloze máma minimalizovat $-x_3$ s jedinou podmínkou na $x_3$, která je,že $x_3 >= 0$. Hodnota $x_3$ tedy není shora omezená, z čehož plyne, že hodnota $-x_3$ není zdola omezená. Úloha tedy nemá optimum.
     ],
   )
 ]
