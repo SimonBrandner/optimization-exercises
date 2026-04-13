@@ -17,6 +17,16 @@
   + ${boup(C) boup(x) | boup(x) in RR^n, boup(A) boup(x) >= boup(b)}$ (lineární zobrazení konvexního mnohostěnu).
 ]
 
+#solution[
+  #enum(
+    [],
+    [],
+    [],
+    enum.item(5)[],
+    enum.item(7)[],
+  )
+]
+
 #exercise[
   Jsou následující množiny konvexní? Odpověď nemusíte dokazovat z definice kovexní množiny, stačí uvést přesvědčivý argument. Jestliže množina není konvexní, napište její konvexní obal jako množinu řešení soustavy (co možná nejjednodušší) rovnic a nerovnic.
   + ${boup(x) in RR^n mid(|) boup(x) >= boup(0), sum_(i=1)^n x_i = 1}$,
@@ -31,10 +41,31 @@
   + ${(1, 1), (1, 2), (3, 1)}$.
 ]
 
+#solution[
+  #enum(
+    [],
+    [],
+    enum.item(5)[],
+    [],
+    [],
+    [],
+    [],
+    [],
+  )
+]
+
 #exercise(number: 7)[
   Jsou následující množiny konvexní mnohostěny? Zápornou odpověď odůvodněte. Kladnou odpověď dokažte tak, že množinu napíšete jako množinu řešení soustavy konečně mnoha lineárních nerovnic (tj. jako průnik konečně mnoha poloprostorů).
   + ${boup(x) in RR^n | boup(x)^T boup(C) boup(x) <= 1}$, kde $boup(C)$ je positivně definitní,
   + ${alpha boup(v) | alpha in RR}$, kde $boup(v) in RR^n$,
   + ($star$) ${boup(C) boup(x) | boup(x) in RR^n, norm(boup(x))_2 <= 1}$, kde $boup(C) in RR^(m times n)$,
   + ${boup(x) in RR^n | norm(boup(x) - boup(a))_2 <= norm(boup(x) - boup(b))_2}$, kde $boup(a), boup(b)$ josu dány.
+]
+
+#solution[
+  #enum(
+    [],
+    [],
+    enum.item(4)[],
+  )
 ]

@@ -18,6 +18,13 @@
   V kterých případech se jedná o konvexní optimalizační úlohu?
 ]
 
+#solution[
+  #enum(
+    enum.item(3)[],
+    [],
+  )
+]
+
 #exercise(number: 5)[
   Chceme rozestavit $n$ lidí v místnosti čtvercového půdorysu tak, aby "každý byl od každého co nejdále". Navrhněte možné formulace této úlohy a u každé určete, zda je konvexní.
 ]

@@ -16,6 +16,15 @@
   + $f(boup(x)) = "součet dvou nejmenších čísel z čísel" x_1, dots, x_n$.
 ]
 
+#solution[
+  #enum(
+    [],
+    [],
+    enum.item(4)[],
+    [],
+  )
+]
+
 #exercise(number: 3)[
   Pro každou funkci dokažte, které z těchto čtyřech tvrzení platí: funkce je konvexní, konkávní, konvexní i konkávní, ani konvexní ani konkávní.
   + $f(x) = e^(x^2)$,
@@ -30,6 +39,15 @@
   + $f(boup(x)) = max_(i=1)^n x_i + min_(i=1)^n x_i$,
   + $f(boup(x)) = max{abs(sum_(i=1)^n x_i - 1), sum_(i=1)^n abs(x_i) - 1}$,
   + $(star)$ $f(boup(x))$ je součet $k$ největších složek $x_1, dots, x_n$ vektoru $boup(x)$ (kde $k <= n$ je dáno).
+]
+
+#solution[
+  #enum(
+    [],
+    [],
+    [],
+    enum.item(5)[],
+  )
 ]
 
 #exercise(number: 7)[

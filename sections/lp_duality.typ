@@ -11,6 +11,15 @@
   + Najděte číselné hodnoty optimálních primárních a duálních proměnných (které si odpovídají přes podmínky komplementarity) pro $n = 3$ a $vec(c_1, c_2, c_3) = vec(-2, 3, 4)$.
 ]
 
+#solution[
+  #enum(
+    [],
+    [],
+    [],
+    [],
+  )
+]
+
 #exercise[
   Napište duální úlohu a podmínky komplementarity k následujícím úlohám. Pokud úloha není LP, nejdříve převeďte na LP. Výslednou duální úlohu zjednodušte, je-li to možné. Kde to má smysl, pokuste se interpretovat duální úlohu a věty o dualitě.
   #enum(
@@ -33,8 +42,25 @@
     ],
     enum.item(7)[
       Minimalizace maxima afinních funkcí:
-      + $min_(x_1, x_2 in RR) max{2 x_1 - x_2 - 3, 1 - x_1, x_2 - 2, x_1 + x_2}$,
-      + $min_(boup(x) in RR^n) max_(i=1)^m (boup(a)_i^T boup(x) + b_i)$.
+      #enum(
+        numbering: "(i)",
+        enum.item(2)[
+          $min_(boup(x) in RR^n) max_(i=1)^m (boup(a)_i^T boup(x) + b_i)$.
+        ],
+      )
+    ],
+  )
+]
+
+#solution[
+  #enum(
+    [],
+    [],
+    enum.item(7)[
+      #enum(
+        numbering: "(i)",
+        enum.item(2)[],
+      )
     ],
   )
 ]
