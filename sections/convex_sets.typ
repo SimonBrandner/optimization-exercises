@@ -35,9 +35,9 @@
       Platí tedy $(1 - alpha) x + alpha y in [a, b]$.
     ],
     [
-      Množina konvexní není. Zvolme $boup(x) = vec(-1, 1)$, $boup(y) = vec(1, 1)$ a $alpha = 1/2$. Potom
+      Množina konvexní není. Zvolme $boup(u) = vec(-1, 1)$, $boup(v) = vec(1, 1)$ a $alpha = 1/2$. Potom
       $
-        (1 - alpha) boup(x) + alpha boup(y) = 1/2 vec(-1, 1) + 1/2 vec(1, 1) = vec(-1/2, 1/2) + vec(1/2, 1/2) = vec(0, 1),
+        (1 - alpha) boup(u) + alpha boup(v) = 1/2 vec(-1, 1) + 1/2 vec(1, 1) = vec(-1/2, 1/2) + vec(1/2, 1/2) = vec(0, 1),
       $
       ale neplatí $0^2 = 1$.
     ],
@@ -121,16 +121,16 @@
 #solution[
   #enum(
     [
-      Ano, je konvexní. Jedná se o průnik afinního podprostoru (která je zjevně konvexní) a nezáporné "polonadroviny" (která je také zjevně konvexní), jejich průnik je tedy také konvexní.
+      Ano, je konvexní. Jedná se o průnik afinního podprostoru (který je zjevně konvexní) a nezáporné $2^n$-ant (zobecnění kvadrantu, který je také zjevně konvexní), jejich průnik je tedy také konvexní.
     ],
     [
-      Nejedná se o konvexní množinu -- jedná se o povrch koule, je tedy zjevné, že body zvolíme-li dva _různé_ body, které jsou prvky této množiny, úsečka mezi nimi nebude ležet v této množině. Jejím konvexním obalem je jednotková koule. Tu lze zapsat jako
+      Nejedná se o konvexní množinu -- jedná se o povrch koule, je tedy zjevné, že zvolíme-li dva _různé_ body, které jsou prvky této množiny, úsečka mezi nimi nebude ležet v této množině (až na krajní body). Jejím konvexním obalem je jednotková koule. Tu lze zapsat jako
       $
         {boup(x) mid(|) norm(boup(x))_2 <= 1}.
       $
     ],
     enum.item(5)[
-      Zjevně se o konvexní množinu nejedná -- jedná se o "kladné" body hyperboly. Lze snadno najít dva, které na ní leží, ale úsečka mezi nimi její součástí není. Jejím konvexním obalem jsou body, které leží "nad hyperbolou", tj.
+      Zjevně se o konvexní množinu nejedná -- jedná se o body hyperboly ležící v prvním kvadrantu. Lze snadno najít dva body ležící na této křivce, ale úsečka mezi nimi součástí množiny není. Jejím konvexním obalem jsou body, které leží "nad hyperbolou", tj.
       $
         {vec(x, y) mid(|) x >= 0, y >= 0, y >= 1/x}.
       $
@@ -174,7 +174,7 @@
   + ${boup(x) in RR^n | boup(x)^T boup(C) boup(x) <= 1}$, kde $boup(C)$ je positivně definitní,
   + ${alpha boup(v) | alpha in RR}$, kde $boup(v) in RR^n$,
   + ($star$) ${boup(C) boup(x) | boup(x) in RR^n, norm(boup(x))_2 <= 1}$, kde $boup(C) in RR^(m times n)$,
-  + ${boup(x) in RR^n | norm(boup(x) - boup(a))_2 <= norm(boup(x) - boup(b))_2}$, kde $boup(a), boup(b)$ josu dány.
+  + ${boup(x) in RR^n | norm(boup(x) - boup(a))_2 <= norm(boup(x) - boup(b))_2}$, kde $boup(a), boup(b)$ jsou dány.
 ]
 
 #solution[
@@ -183,9 +183,9 @@
       Nejedná se o konvexní mnohostěn. Rozepsáním $boup(x)^T boup(C) boup(x)$ po složkách dostaneme polynom druhého stupňě, množina tedy nebude mít lineární charakter.
     ],
     [
-      Ano, množina je (degenerovaný) konvexní mnohostěn. Máme-li bázi $boup(b)_1, dots, boup(b)_(n-1)$ prostoru $(im(boup(v)))^bot$, daná množina lze zapsat jako
+      Ano, množina je (degenerovaný) konvexní mnohostěn. Máme-li bázi $boup(b)_1, dots, boup(b)_(n-1)$ prostoru $("span"(boup(v)))^bot$ uspořádanou do matice $boup(B) = mat(augment: #(vline: (1, 2)), boup(b)_1, dots, boup(b)_(n-1))$, daná množina lze zapsat jako
       $
-        {boup(x) mid(|) mat(augment: #(vline: (1, 2)), boup(b)_1, dots, boup(b)_(n-1)) boup(x) = boup(0)}.
+        {boup(x) mid(|) boup(B) boup(x) >= boup(0), boup(B) boup(x) <= boup(0)}.
       $
     ],
     enum.item(4)[
