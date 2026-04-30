@@ -57,7 +57,7 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
                   cos(t) & = plus.minus sqrt(2/3).
           $
 
-          Z @circle-points[Obrázku] pak ihned vidíme, které body jsou maxima a minima.
+          Z @circle-points[Obrázku] pak ihned vidíme, že červené body jsou maxima a modré body jsou minima.
           #figure(
             caption: [Extrémy na kružnici],
             cetz.canvas(length: 2cm, {
@@ -88,6 +88,7 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
                   $2/3 sqrt(1/3)$,
                   calc.sqrt(2 / 3),
                   calc.sqrt(1 / 3),
+                  true,
                 ),
                 (
                   "north-west",
@@ -96,6 +97,7 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
                   $- 2/3 sqrt(1/3)$,
                   +calc.sqrt(2 / 3),
                   -calc.sqrt(1 / 3),
+                  false,
                 ),
                 (
                   "south-east",
@@ -104,6 +106,7 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
                   $2/3 sqrt(1/3)$,
                   -calc.sqrt(2 / 3),
                   +calc.sqrt(1 / 3),
+                  true,
                 ),
                 (
                   "north-east",
@@ -112,13 +115,14 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
                   $- 2/3 sqrt(1/3)$,
                   -calc.sqrt(2 / 3),
                   -calc.sqrt(1 / 3),
+                  false,
                 ),
-                ("south-west", $0$, $1$, $0$, 0, 1),
-                ("north-west", $0$, $-1$, $0$, 0, -1),
+                ("south-west", $0$, $1$, $0$, 0, 1, false),
+                ("north-west", $0$, $-1$, $0$, 0, -1, true),
               )
               let scale = 2
 
-              for (point-anchor, x, y, v, x-pos, y-pos) in points {
+              for (point-anchor, x, y, v, x-pos, y-pos, maximum) in points {
                 let point-name = (
                   "circle-"
                     + str(x-pos).replace(".", ":")
@@ -129,7 +133,7 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
                   name: point-name,
                   radius: 3pt,
                   stroke: none,
-                  fill: blue,
+                  fill: if maximum { red } else { blue },
                 )
                 content(
                   (point-name),
