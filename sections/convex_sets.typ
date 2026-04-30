@@ -141,7 +141,7 @@
     [
       Nejedná se o konvexní množinu. Jedná se o netriviální část kružnice, která ale sama není konvexní, tedy ani jeji netriviální část nebude konvexní. Jejím konvexním obalem je
       $
-        {vec(x, y) mid(|) x >= 0, y >= 0, x^2 + y^2 <= 1}.
+        {vec(x, y) mid(|) x + y >= 1, x^2 + y^2 <= 1}.
       $
     ],
     [
