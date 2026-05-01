@@ -13,10 +13,64 @@
 
 #solution[
   #enum(
-    [],
-    [],
-    [],
-    [],
+    [
+      Volíme
+      $
+        x_i = cases(
+          1 & "pokud" c_i > 0\,,
+          -1 & "pokud" c_i < 0\,,
+          v & "jinak"\,
+        ) #h(20pt) "kde" v in [-1, 1].
+      $
+    ],
+    [
+      Úlohu lze zapsat jako maximalizace
+      $
+        boup(c)^T boup(x),
+      $
+      kde $boup(c) = vec(c_1, dots.v, c_n)$ $boup(x) = vec(x_1, dots.v, x_n)$, za podmínkek $boup(x) >= -boup(1)$ a $boup(x) <= boup(1)$, tj.
+      $
+        mat(augment: #(hline: 1), boup(I); -boup(I)) &boup(x) <= mat(augment: #(hline: 1), boup(1); boup(1)),\
+        &boup(x) in RR^n.
+      $
+
+      K ní je duální úlohou minimalizace
+      $
+        mat(augment: #(vline: 1), boup(1)^T, boup(1)^T) mat(augment: #(hline: 1), boup(y); boup(z)) = sum_(j=1)^n (y_j + z_j)
+      $
+      za podmínek
+      $
+        boup(y) & >= boup(0), \
+        boup(z) & >= boup(0), \
+        mat(augment: #(vline: 1), boup(I), -boup(I)) mat(augment: #(hline: 1), boup(y); boup(z)) & = boup(c), "resp" boup(y) - boup(z) = boup(c).
+      $
+
+      Bude-li $c_i = 0$, stačí splnit $y_i = z_i$ tak, že $y_i = z_i = 0$. Bude-li $c_i > 0$, bude muset $y_i > z_i$, zvolíme tedy $y_i = c_i$ a $z_i = 0$. Bude-li $c_i < 0$, bude muset $z_i > y_i$, tudíž zvolíme $y_i = 0$ a $z_i = -c_i$.
+    ],
+    [
+      Podmínky komplementarity jsou
+      $
+         x_i & = & 1 & "nebo"          & y_i = 0, \
+        -x_i & = & 1 & "nebo"          & z_i = 0, \
+             &   &   & #h(12pt) dots.v &          \
+         x_i & = & 1 & "nebo"          & y_i = 0, \
+        -x_i & = & 1 & "nebo"          & z_i = 0. \
+      $
+    ],
+    [
+      Pro $boup(c) = vec(-2, 3, 4)$ je optimální argument primární úlohy $boup(x) = vec(-1, 1, 1)$, čímž dostaneme hodnotu $(-2)(-1) + 3 + 4 = 9$. V duální úloze volíme $boup(y) = vec(0, 3, 4)$, hodnota $z$ bude $boup(z) = vec(2, 0, 0)$, tím dostaneme hodnotu úlohy $0 + 2 + 3 + 0 + 4 + 0 = 9$. Optimální hodnoty duálních úloh si tedy odpovídájí.
+
+      Můžeme rozepsat podmínky komplementarity:
+      $
+        #let sat(x) = text(fill: green, $#x$)
+        x_1 & = & -1 & = & 1 & "nebo" & sat(y_1 & = & 0 & = & 0), \
+        sat(-x_1 & = & 1 & = & 1)& "nebo" & z_1 & = & 2 & = & 0, \
+        sat(x_2 & = & 1 & = & 1) & "nebo" & y_2 & = & 3 & = & 0, \
+        -x_2 & = & -1 & = & 1 & "nebo" & sat(z_2 & = & 0 & = & 0), \
+        sat(x_3 & = & 1 & = & 1) & "nebo" & y_3 & = & 4 & = & 0, \
+        -x_3 & = & -1 & = & 1 & "nebo" & sat(z_3 & = & 0 & = & 0). \
+      $
+    ],
   )
 ]
 
