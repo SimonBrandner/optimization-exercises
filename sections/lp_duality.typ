@@ -28,7 +28,7 @@
       $
         boup(c)^T boup(x),
       $
-      kde $boup(c) = vec(c_1, dots.v, c_n)$ $boup(x) = vec(x_1, dots.v, x_n)$, za podmínkek $boup(x) >= -boup(1)$ a $boup(x) <= boup(1)$, tj.
+      kde $boup(c) = vec(c_1, dots.v, c_n)$, $boup(x) = vec(x_1, dots.v, x_n)$, za podmínkek $boup(x) >= -boup(1)$ a $boup(x) <= boup(1)$, tj.
       $
         mat(augment: #(hline: 1), boup(I); -boup(I)) &boup(x) <= mat(augment: #(hline: 1), boup(1); boup(1)),\
         &boup(x) in RR^n.
@@ -42,7 +42,7 @@
       $
         boup(y) & >= boup(0), \
         boup(z) & >= boup(0), \
-        mat(augment: #(vline: 1), boup(I), -boup(I)) mat(augment: #(hline: 1), boup(y); boup(z)) & = boup(c), "resp" boup(y) - boup(z) = boup(c).
+        mat(augment: #(vline: 1), boup(I), -boup(I)) mat(augment: #(hline: 1), boup(y); boup(z)) & = boup(c), "resp." boup(y) - boup(z) = boup(c).
       $
 
       Bude-li $c_i = 0$, stačí splnit $y_i = z_i$ tak, že $y_i = z_i = 0$. Bude-li $c_i > 0$, bude muset $y_i > z_i$, zvolíme tedy $y_i = c_i$ a $z_i = 0$. Bude-li $c_i < 0$, bude muset $z_i > y_i$, tudíž zvolíme $y_i = 0$ a $z_i = -c_i$.
