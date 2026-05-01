@@ -84,12 +84,14 @@
       $
       za podmínkek
       $
-          x_1 & - &   x_2 & -    &   x_3 &&          && >= & 0 \
-        - x_1 & + & 2 x_2 & -    & 3 x_3 &&          && <= & 5 \
-        2 x_1 & - &   x_2 & -    &   x_3 &&  + 2 x_4 &&  = & 6 \
-              &   &       & x_1, &  x_2, && x_3, x_4 && >= & 0.
+          x_1 & - &   x_2 & - &   x_3 &&         && >= & 0, \
+        - x_1 & + & 2 x_2 & - & 3 x_3 &&         && <= & 5, \
+        2 x_1 & - &   x_2 & - &   x_3 && + 2 x_4 &&  = & 6, \
+          x_1 &   &       &   &       &&         && >= & 0, \
+              &   &   x_2 &   &       &&         && >= & 0, \
+              &   &       &   &   x_3 &&         && >= & 0, \
+              &   &       &   &       &&     x_4 && >= & 0.
       $
-      Inicializujte co nejjednodušším způsobem základní simplexový algoritmus. Vyřešte tímto algoritmem. Nepoužívejte dvoufázovou metodu.
     ],
     [
       $min_(x in RR) max_(i = 1)^n abs(a_i - x)$ (střed intervalu).
@@ -108,12 +110,114 @@
 
 #solution[
   #enum(
-    [],
-    [],
+    [
+      Duální úlohou je maximalizace
+      $
+        5 y_2 + 6 y_3
+      $
+      za podmínek
+      $
+          y_1 &   &       &   &       & >= &  0, \
+              &   &   y_2 &   &       & <= &  0, \
+              &   &       &   &   y_3 & in & RR, \
+          y_1 & - &   y_2 & + & 2 y_3 & <= &  2, \
+        - y_1 & + & 2 y_2 & - &   y_3 & <= &  0, \
+        - y_1 & - & 3 y_2 & - &   y_3 & <= & -3, \
+              &   &       &   & 2 y_3 & <= &  1. \
+      $
+
+      Podmínky komplementarity jsou
+      $
+        y_1 & & & & & = & 0 "nebo"& &x_1 & - & x_2 & - & x_3 && && = & 0, \
+        & & y_2 & & & = & 0 "nebo"& - &x_1 & + & 2 x_2 & - & 3 x_3 && && = & 5, \
+        y_1 & - & y_2 & + & 2 y_3 & = & 2 "nebo"& &x_1 & & & & && && = & 0, \
+        - y_1 & + & 2 y_2 & - & y_3 & = & 0 "nebo"& && & x_2 & & && && = & 0, \
+        - y_1 & - & 3 y_2 & - & y_3 & = & -3 "nebo"& && & & & x_3 && && = & 0, \
+        & & & & 2 y_3 & = & 1 "nebo"& && & & & && x_4 && = & 0.
+      $
+
+      Neboť se úloha zdá poměrně arbitrární, nebudeme se pokoušet interpretovat její duální úlohu a věty o dualitě.
+    ],
+    [
+      Úloha
+      $
+        min_(x in RR) max_(i = 1)^n abs(a_i - x)
+      $
+      je ekvivalentní úloze
+      $
+        min_(x in RR) max{a_1 - x, - a_1 + x , dots, a_n - x, - a_n + x}
+      $
+      a to lze zapsat jako úloha lineárního programování. Minimalizujeme $u$ za podmínek
+      $
+        x + u & >=           & a_1, \
+        x - u & <=           & a_1, \
+              & space dots.v &      \
+        x + u & >=           & a_n, \
+        x - u & <=           & a_n, \
+            x & in           &  RR, \
+            u & in           &  RR.
+      $
+
+      Duální úlohou je maximalizace
+      $
+        sum_(i=1)^n (a_i y_(2i-1) + a_i y_(2i))
+      $
+      za podmínek
+      $
+                                    y_1 & >=           & 0, \
+                                    y_2 & <=           & 0, \
+                                        & space dots.v &    \
+                               y_(2n-1) & >=           & 0, \
+                                 y_(2n) & <=           & 0, \
+        sum_(i=1)^n (y_(2i-1) + y_(2i)) & =            & 0, \
+        sum_(i=1)^n (y_(2i-1) - y_(2i)) & =            & 1.
+      $
+
+      Podmínky komplementarity jsou potom
+      $
+        x + u & = & a_1 & "nebo"          &      y_1 & = & 0, \
+        x - u & = & a_1 & "nebo"          &      y_2 & = & 0, \
+              &   &     & #h(12pt) dots.v &           \
+        x + u & = & a_n & "nebo"          & y_(2n-1) & = & 0, \
+        x - u & = & a_n & "nebo"          &   y_(2n) & = & 0.
+      $
+    ],
     enum.item(7)[
       #enum(
         numbering: "(i)",
-        enum.item(2)[],
+        enum.item(2)[
+          Úloha
+          $
+            min_(boup(x) in RR^n) max_(i=1)^m (boup(a)_i^T boup(x) + b_i)
+          $
+          lze zapsat jako lineární program, kde minimalizujeme
+          $
+            mat(augment: #(vline: 1), 1, boup(0)) mat(augment: #(hline: 1), u; boup(x))
+          $
+          za podmínek
+          $
+            mat(augment: #(vline: 1), boup(1), -boup(A)) mat(augment: #(hline: 1), u; boup(x)) & >= && boup(b), \
+            boup(x) & in && RR^n,
+          $
+          kde $boup(A) = mat(augment: #(hline: (1, 2)), boup(a)_1^T; dots.v; boup(a)_m^T)$ a $boup(b) = mat(augment: #(hline: (1, 2)), b_1; dots.v; b_m)$.
+
+          Duální úlohou je maximalizace
+          $
+            boup(b)^T boup(y)
+          $
+          za podmínek
+          $
+            boup(y) &>=&& boup(0),\
+            mat(augment: #(hline: 1), boup(1)^T; -boup(A)^T) boup(y) &=&& mat(augment: #(hline: 1), 1; boup(0)).
+          $
+
+          Podmínky komplementarity pak jsou
+          $
+            u - boup(a)_1^T boup(x) & = & b_1 & "nebo"          & y_1 & = & 0, \
+                                    &   &     & #h(12pt) dots.v &     &   &    \
+            u - boup(a)_m^T boup(x) & = & b_m & "nebo"          & y_m & = & 0. \
+          $
+        ],
       )
     ],
   )
