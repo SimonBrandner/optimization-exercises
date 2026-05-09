@@ -150,3 +150,13 @@
 #exercise(number: 8)[
   Co je subkontura výšky $2$ funkce jedné proměnné $f(x) = x^2 - x$?
 ]
+
+#solution[
+  Jedná se o množinu
+  $
+    {x | f(x) <= 2} & = {x | x^2 - x <= 2} = \
+                    & = {x | x^2 - x - 2 <= 0} = \
+                    & = {x | (x - 2)(x + 1) <= 0} = \
+                    & = [-1, 2].
+  $
+]
