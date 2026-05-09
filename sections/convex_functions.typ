@@ -119,9 +119,34 @@
 
 #solution[
   #enum(
-    [],
-    [],
-    [],
+    [
+
+    ],
+    [
+      Není konvexní ani konkávní. Nejprve ukážeme, že není konvexní. Zvolme $alpha = 1/2$, $x = -1$ a $y = 1$. Potom
+      $
+        f((1 - alpha) x + alpha y) = e^(-(1/2 (-1) + 1/2 1)^2) = e^(0) = 1,
+      $
+      což je větší než
+      $
+        (1 - alpha) f(x) + alpha f(y) = 1/2 e^(-(-1)^2) + 1/2 e^(-1^2) = e^(-1).
+      $
+
+      Abychom ukázali, že není konkávní, zvolíme $alpha = 1/2$, $x = 1$ a $y = 2$. Pak platí, že
+      $
+        f((1 - alpha) x + alpha y) = e^(-(1/2 1 + 1/2 2)^2) = e^(3/2),
+      $
+      což je menší než
+      $
+        (1 - alpha) f(x) + alpha f(y) = 1/2 e^(-1^2) + 1/2 e^(-2^2) = 1/2 (e^(-1) + e^(-4)).
+      $
+
+      Funkce $f$ tedy není ani konkávní, ani konkávní.
+    ],
+    [
+      Funkce $f$ je konvexní a není konkávní.
+
+    ],
     enum.item(5)[],
   )
 ]
@@ -147,7 +172,11 @@
   }))
 ]
 
-#solution[]
+#solution[
+  Vrstevnice z prvního obrázku nemohou být vrstevnicemi konvexní funkce, neboť úsečka mezi body na vrstevnici výšky $1$ a vrstevnici výšky $3$, která leží v polopřímce, jejíž počátek je ve středu kručnic, nemůže ležet nad grafem funkce.
+
+  Vrstevnice z druhého obrázku by mohly být grafem konvexní funkce. Příkladem by mohla být např. funkce, jejíž graf odpovídá grafu absolutní hodnoty z maxima afinních funkcí, který byl orotován okolo počátku.
+]
 
 #exercise(number: 8)[
   Co je subkontura výšky $2$ funkce jedné proměnné $f(x) = x^2 - x$?
