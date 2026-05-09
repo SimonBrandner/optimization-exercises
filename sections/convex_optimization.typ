@@ -154,4 +154,10 @@
   kde $d in RR$ je délka stěny místnosti.
 
   Protože čtverec je konvexní množina, funkce $f(boup(x), boup(y)) = norm(boup(x) - boup(y))$ je konvexní a součet konvexních funkcí je konvexní funkce, tato formulace úlohy je konvexní optimalizační úlohou.
+
+  Alternativně úlohu lze formulovat jako
+  $
+    max{min_({i, j} in I) norm(boup(x)_i - boup(x)_j) mid(|) boup(x)_1, dots, boup(x)_n in [0, d] times [0, d], I = vec({1, dots, n}, 2) },
+  $
+  minimum z konvexních funkcí, ale není konvexní. Výsledná úloha tedy nebude konvexní optimalizační úlohou.
 ]
