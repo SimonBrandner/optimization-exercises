@@ -5,9 +5,7 @@
 = Konvexní funkce
 
 #exercise[
-  Pro každou funkci $f: RR^n -> RR$ dokažte z podmínky
-  ,
-  které z těchto čtyř tvrzení platí (a pro jaké $n$): funkce je konvexní, konkávní, konvexní i konkávní, ani konvexní ani konkávní:
+  Pro každou funkci $f: RR^n -> RR$ dokažte z podmínky, které z těchto čtyř tvrzení platí (a pro jaké $n$): funkce je konvexní, konkávní, konvexní i konkávní, ani konvexní ani konkávní:
   + $f(boup(x)) = boup(a)^T boup(x) + b$,
   + $f(boup(x)) = boup(x)^T boup(x)$,
   + $f(boup(x)) = 1/n sum_(i=1)^n x_i$,
@@ -18,10 +16,88 @@
 
 #solution[
   #enum(
-    [],
-    [],
-    enum.item(4)[],
-    [],
+    [
+      Z rovnosti
+      $
+        f((1 - alpha) boup(x) + alpha boup(y)) &= boup(a)^T ((1 - alpha) boup(x) + alpha boup(y)) + boup(b) = \
+        &= (1 - alpha) boup(a)^T boup(x) + alpha boup(a)^T boup(y) + boup(b) = \
+        &= (1 - alpha) boup(a)^T boup(x) + alpha boup(a)^T boup(y) + (1 - alpha + alpha) boup(b) = \
+        &= (1 - alpha) boup(a)^T boup(x) + alpha boup(a)^T boup(y) + (1 - alpha) boup(b) + alpha boup(b) = \
+        &= (1 - alpha) boup(a)^T boup(x) + (1 - alpha) boup(b) + alpha boup(a)^T boup(y) +alpha boup(b) = \
+        &= (1 - alpha) (boup(a)^T boup(x) + boup(b)) + alpha (boup(a)^T boup(y) + boup(b)) =\
+        &= (1 - alpha) f(boup(x)) + alpha f(boup(y))
+      $
+      vidíme, že funkce $f$ je konvexní i konkávní.
+    ],
+    [
+      Budeme postupovat analogicky k úloze (c) ze @convex_sets_proof_from_definition. Chceme ukázat, že platí
+      $
+        f((1 - alpha) boup(x) + alpha boup(y)) <= (1 - alpha) f(boup(x)) + alpha f (boup(y))
+      $
+      resp. že
+      $
+        (1 - alpha) f(boup(x)) + alpha f (boup(y)) - f((1 - alpha) boup(x) + alpha boup(y)) >=0.
+      $
+
+      To ale platí:
+      $
+        & space space space (1 - alpha) f(boup(x)) + alpha f (boup(y)) - f((1 - alpha) boup(x) + alpha boup(y)) = \
+        &= (1 - alpha) boup(x)^T boup(x) + alpha boup(y)^T boup(y) - ((1 - alpha) boup(x) + alpha boup(y))^T ((1 - alpha) boup(x) + alpha boup(y)) = \
+        &= (1 - alpha) boup(x)^T boup(x) + alpha boup(y)^T boup(y) - ((1 - alpha)^2 boup(x)^T boup(x) + 2 alpha (1 - alpha) boup(x)^T boup(y) + alpha^2 boup(y)^T boup(y)) = \
+        &= (1 - alpha) boup(x)^T boup(x) + alpha boup(y)^T boup(y) - (1 - alpha)^2 boup(x)^T boup(x) - 2 alpha (1 - alpha) boup(x)^T boup(y) - alpha^2 boup(y)^T boup(y) = \
+        &= (1 - alpha) boup(x)^T boup(x) - (1 - alpha)^2 boup(x)^T boup(x) - 2 alpha (1 - alpha) boup(x)^T boup(y) + alpha boup(y)^T boup(y) - alpha^2 boup(y)^T boup(y) = \
+        &= (1 - alpha) (boup(x)^T boup(x) - (1 - alpha) boup(x)^T boup(x) - 2 alpha boup(x)^T boup(y)) + alpha boup(y)^T boup(y) (1 - alpha) = \
+        &= alpha (1 - alpha) (boup(x)^T boup(x) - 2 boup(x)^T boup(y) + boup(y)^T boup(y)) = \
+        &= alpha (1 - alpha) norm(boup(x) - boup(y))^2 >=0. \
+      $
+      Vidíme tedy, že funkce $f$ je konvexní a není konkávní.
+    ],
+    enum.item(4)[
+      Funkce $f$ není konvexní ani konkávní. Nejprve ukážeme, že není konkávní: zvolme $alpha = 1/2$, $boup(x) = vec(0, 10, 100)$ a $boup(y) = vec(100, 10, 0)$. Potom platí
+      $
+        f((1 - alpha) boup(x) + alpha boup(y)) &= "median"(1/2 vec(0, 10, 100) + 1/2 vec(100, 10, 0)) = \
+        &= "median"vec(50, 10, 50) = \
+        &= 50,
+      $
+      což je větší než
+      $
+        (1 - alpha) f(boup(x)) + alpha f(boup(y)) = 1/2 "median"vec(0, 10, 100) + 1/2 "median"vec(100, 10, 0) = 10,
+      $
+      a tedy funkce není konvexní.
+
+      Abychom ukázali, že není konvexní, zvolíme $alpha = 1/2$, $boup(x) = vec(0, -10, -100)$ a $boup(y) = vec(-100, -10, 0)$. Pak bude platit
+      $
+        f((1 - alpha) boup(x) + alpha boup(y)) &= "median"(1/2 vec(0, -10, -100) + 1/2 vec(-100, -10, 0)) =\
+        &= "median"vec(-50, -10, -50) = \
+        &= -50,
+      $
+      což je zjevně menší než
+      $
+        (1 - alpha) f(boup(x)) + alpha f(boup(y)) = 1/2 "median"vec(0, -10, -100) + 1/2 "median"vec(-100, -10, 0) = -10,
+      $
+      z čehož plyne, že funkce není ani konkávní.
+    ],
+    [
+      Funkce $f$ není konvexní ani konkávní. Nejprve ukážeme, že není konkávní. Zvolme $alpha = 1/2$, $boup(x) = vec(1, 1)$ a $boup(y) = vec(1, -1)$. Potom
+      $
+        f((1 - alpha) boup(x) + alpha boup(y)) = f (1/2 vec(1, 1) + 1/2 vec(1, -1)) = f vec(1, 0) = min vec(abs(1), abs(0)) = 0,
+      $
+      což je menší než
+      $
+        (1 - alpha) f(boup(x)) + alpha f(boup(y)) = 1/2 min vec(abs(1), abs(1)) + 1/2 min vec(abs(1), abs(-1)) = 1,
+      $
+      funkce tedy není konkávní.
+
+      Abychom ukázali, že není konvexní, zvolíme $alpha = 1/2$, $boup(x) = vec(1, 0)$ a $boup(y) = vec(0, 1)$. Potom
+      $
+        f((1 - alpha) boup(x) + alpha boup(y)) = f (1/2 vec(1, 0) + 1/2 vec(0, 1)) = f vec(1/2, 1/2) = min vec(abs(1/2), abs(1/2)) = 1/2,
+      $
+      což je větší než
+      $
+        (1 - alpha) f(boup(x)) + alpha f(boup(y)) = 1/2 min vec(abs(1), abs(0)) + 1/2 min vec(abs(0), abs(1)) = 0,
+      $
+      funkce tedy není ani konvexní.
+    ],
   )
 ]
 

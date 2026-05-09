@@ -15,7 +15,7 @@
   + $ZZ$ (množina celých čísel),
   + ${boup(x) in RR^n mid(|) max{x_1, dots, x_n} >= 0}$,
   + ${boup(C) boup(x) | boup(x) in RR^n, boup(A) boup(x) >= boup(b)}$ (lineární zobrazení konvexního mnohostěnu).
-]
+] <convex_sets_proof_from_definition>
 
 #solution[
   #enum(
