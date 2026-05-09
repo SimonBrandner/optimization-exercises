@@ -30,8 +30,6 @@
         name: "plot",
         axis-style: "school-book",
         size: (6, 6),
-        x-label: $#h(20pt)x_1$,
-        y-label: $x_2$,
         x-tick-step: 1,
         y-tick-step: 1,
         y-min: -1,
@@ -73,7 +71,7 @@
       kde funkce $f$ nabývá hodnoty $0$. V tomto případě funkce $f$ konvexní není (je ale konkávní), nejedná se tedy o konvexní optimalizační úlohu (úloha na ni však lze převést).
     ],
     [
-      Z vrstevnice funkce $f$ na množině,
+      Z vrstevnic funkce $f$ na množině,
       #figure(
         align(center, cetz.canvas({
           import cetz.draw: *
@@ -82,8 +80,6 @@
             name: "plot",
             axis-style: "school-book",
             size: (6, 6),
-            x-label: $#h(20pt)x_1$,
-            y-label: $x_2$,
             x-tick-step: 1,
             y-tick-step: 1,
             y-min: -1,
@@ -137,7 +133,7 @@
         })),
         caption: [Vrstevnice funkce $f$ na množině],
       )
-      vidíme, že minimum bude ležet na průsečíku grafů funkcí $x |-> x$ a $x |-> 1 - 2x$. To je bod $vec(1/3, 1/3)$ a funkce tam nabývá hodnoty $1/3$. Funkce $f$ konvexní, jedná se tedy o konvexní optimalizační úlohu.
+      vidíme, že minimum bude ležet na průsečíku přímek $y = x$ a $2x + y = 1$. To je bod $vec(1/3, 1/3)$ a funkce tam nabývá hodnoty $1/3$. Funkce $f$ konvexní, jedná se tedy o konvexní optimalizační úlohu.
     ],
   )
 ]
