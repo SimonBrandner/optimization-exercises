@@ -145,3 +145,13 @@
 #exercise(number: 5)[
   Chceme rozestavit $n$ lidí v místnosti čtvercového půdorysu tak, aby "každý byl od každého co nejdále". Navrhněte možné formulace této úlohy a u každé určete, zda je konvexní.
 ]
+
+#solution[
+  Úlohu lze formulovat např. jako
+  $
+    max{sum_({i, j} in I) norm(boup(x)_i - boup(x)_j) mid(|) boup(x)_1, dots, boup(x)_n in [0, d] times [0, d], I = vec({1, dots, n}, 2) },
+  $
+  kde $d in RR$ je délka stěny místnosti.
+
+  Protože čtverec je konvexní množina, funkce $f(boup(x), boup(y)) = norm(boup(x) - boup(y))$ je konvexní a součet konvexních funkcí je konvexní funkce, tato formulace úlohy je konvexní optimalizační úlohou.
+]
