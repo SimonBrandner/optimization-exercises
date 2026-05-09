@@ -147,6 +147,8 @@
   }))
 ]
 
+#solution[]
+
 #exercise(number: 8)[
   Co je subkontura výšky $2$ funkce jedné proměnné $f(x) = x^2 - x$?
 ]
