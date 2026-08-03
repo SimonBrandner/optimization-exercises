@@ -24,7 +24,7 @@ jobs:
         run: mkdir github-pages-build
 
       - name: Build
-        run: typst compile main.typ github-pages-build/main.pdf
+        run: typst compile main.typ github-pages-build/cviceni-z-optimalizace.pdf
 
       - name: Upload site files as artifact
         id: deployment
