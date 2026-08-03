@@ -1,0 +1,46 @@
+# Adapted from https://forum.typst.app/t/publish-example-pdfs-using-github-pages/5781
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: typst-community/setup-typst@v4
+        with:
+          typst-version: 0.14.2
+
+      - name: Create build directory
+        run: mkdir github-pages-build
+
+      - name: Build
+        run: typst compile main.typ github-pages-build/main.pdf
+
+      - name: Upload site files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: github-pages-build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
