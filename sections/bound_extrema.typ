@@ -1,4 +1,4 @@
-#import "../simplex-template/lib.typ": *
+#import "../dependencies/simplex-template/lib.typ": *
 #import "../utils.typ": *
 #import "@preview/cetz:0.4.2"
 

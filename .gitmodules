@@ -1,3 +1,3 @@
 [submodule "simplex-template"]
-	path = simplex-template
+	path = dependencies/simplex-template
 	url = https://github.com/SimonBrandner/simplex-template
