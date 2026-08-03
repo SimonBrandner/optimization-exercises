@@ -1,4 +1,4 @@
-#import "@local/simplex-template:0.1.0": *
+#import "../simplex-template/lib.typ": *
 #import "../utils.typ": *
 #import "@preview/cetz:0.4.2"
 
@@ -343,7 +343,6 @@ Následující úlohy vyřešte nejprve libovolným (co možná jednoduchým) zp
             content((), padding: 5pt, anchor: "east", $boup(b)$)
             circle((2, 2), radius: 2pt, stroke: none, fill: black)
             content((), padding: 5pt, anchor: "west", $boup(a)$)
-
 
             let x-pos = calc.cos(45deg) * 1.5
             let y-pos = calc.sin(45deg) * 1.5

@@ -1,4 +1,4 @@
-#import "@local/simplex-template:0.1.0": *
+#import "../simplex-template/lib.typ": *
 #import "@preview/cetz:0.4.2"
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 #import "../utils.typ": *
@@ -87,7 +87,6 @@
 
           line((9 / 8 + 1 / 8, 9 / 8 + 1 / 8), (10 / 8 - 1 / 8, 10 / 8 + 1 / 8))
           line((10 / 8 - 1 / 8, 10 / 8 + 1 / 8), (8 / 8, 10 / 8))
-
 
           content((0.25, 1), $norm(boup(x))$)
           content((1, 0.25), $norm(boup(y))$)

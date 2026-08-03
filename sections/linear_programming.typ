@@ -1,6 +1,6 @@
 #import "@preview/cetz-plot:0.1.3": plot
 #import "@preview/cetz:0.4.2"
-#import "@local/simplex-template:0.1.0": *
+#import "../simplex-template/lib.typ": *
 #import "../utils.typ": *
 
 = Lineární programování

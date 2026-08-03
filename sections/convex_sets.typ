@@ -1,4 +1,4 @@
-#import "@local/simplex-template:0.1.0": *
+#import "../simplex-template/lib.typ": *
 #import "../utils.typ": *
 
 = Konvexní množiny a mnohostěny
